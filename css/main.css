@@ -1,5 +1,4 @@
 /* main.css de toda la página */
-
 @charset "ISO-8859-1";
 
 @font-face {
@@ -58,24 +57,24 @@ p, span {
 }
 
 a.mostrar_reserva {
-	text-decoration:none;
+	text-decoration: none;
 	font-weight: 600;
 	font-size: 20px;
-	color:black;
-	padding-top:15px;
-	padding-bottom:15px;
-	padding-left:40px;
-	padding-right:40px;
-	background-color:#9bd155;
+	color: black;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 40px;
+	padding-right: 40px;
+	background-color: #9bd155;
 	border-color: #d8d8d8;
 	border-width: 3px;
 	border-style: solid;
-	border-radius:35px;
+	border-radius: 35px;
 }
 
 a.mostrar_reserva:hover {
 	opacity: 0.9;
-	color:black;
+	color: black;
 }
 
 a.mostrar_menus {
@@ -83,12 +82,12 @@ a.mostrar_menus {
 }
 
 a.mostrar_menus:hover {
-	color:#d8c12d;
+	color: #d8c12d;
 }
 
 .footer_fijo {
-  position: fixed;
-  bottom: 0;
+	position: fixed;
+	bottom: 0;
 }
 
 .avisoLegal_movil {
@@ -97,7 +96,7 @@ a.mostrar_menus:hover {
 }
 
 a.enlace_legal:hover {
-	color:#d8c12d;
+	color: black;
 }
 /* HEADER
    ========================================================================= */
@@ -141,14 +140,46 @@ nav>#lista_principal_index {
 	font-size: 11px;
 }
 
+nav>#lista_principal_index #sobreNosotros, nav>#lista_principal_index #consultoria,
+	nav>#lista_principal_index #campaign, nav>#lista_principal_index #contacto,
+	nav>#lista_principal_index #blog {
+	padding-top: 20px;
+}
+
 #sobreNosotros, #consultoria, #campaign, #contacto, #blog {
 	display: none;
 }
 
 #menu_consultoria {
-	position: absolute;
-	background-color: white;
 	font-size: 18px;
+	background-color: white;
+	padding: 5px 10px 5px 10px;
+	color: black;
+	position: absolute;
+	border-radius: 5px;
+	background: rgba(226, 226, 226, 1);
+	background: -moz-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -webkit-gradient(bottom top, up top, color-stop(0%, rgba(226, 226, 226,
+		1)), color-stop(0%, rgba(209, 209, 209, 1)),
+		color-stop(14%, rgba(219, 219, 219, 1)),
+		color-stop(58%, rgba(244, 244, 244, 1)),
+		color-stop(76%, rgba(254, 254, 254, 1)));
+	background: -webkit-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -o-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -ms-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: linear-gradient(to up, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2',
+		endColorstr='#fefefe', GradientType=1);
 }
 
 #menu_consultoria li {
@@ -159,7 +190,8 @@ nav>#lista_principal_index {
 	color: #2CA089;
 }
 
-#sobreNosotros2 a:hover, #consultoria2 a:hover, #campaign2 a:hover, #contacto2 a:hover, #blog2 a:hover {
+#sobreNosotros2 a:hover, #consultoria2 a:hover, #campaign2 a:hover,
+	#contacto2 a:hover, #blog2 a:hover {
 	color: #2CA089;
 }
 
@@ -188,12 +220,12 @@ a.seleccionado {
 /* Inicio ocupara todo el espacio sobrante */
 #inicio {
 	flex: 1 1 auto;
-	padding-left: 50px;
+	padding-left: 20px;
+	padding-top: 5px;
 }
 
 #inicio img {
 	height: 40px;
-	padding-left: 10px;
 }
 
 #inicio img:hover {
@@ -212,6 +244,7 @@ a.seleccionado {
 /* Mostramos el menu para dispositivos moviles*/
 nav>ul>li#menu_moviles {
 	display: inline;
+	padding-top: 5px;
 }
 
 /* Lista del menu para dispositivos moviles, la ocultamos y luego la mostraremos con Jquery */
@@ -223,14 +256,29 @@ nav>ul>li>ul#lista_movil {
 	display: none;
 	position: absolute;
 	border-radius: 5px;
-	background: rgba(226,226,226,1);
-	background: -moz-linear-gradient(bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 14%, rgba(244,244,244,1) 58%, rgba(254,254,254,1) 76%);
-	background: -webkit-gradient(bottom top, up top, color-stop(0%, rgba(226,226,226,1)), color-stop(0%, rgba(209,209,209,1)), color-stop(14%, rgba(219,219,219,1)), color-stop(58%, rgba(244,244,244,1)), color-stop(76%, rgba(254,254,254,1)));
-	background: -webkit-linear-gradient(bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 14%, rgba(244,244,244,1) 58%, rgba(254,254,254,1) 76%);
-	background: -o-linear-gradient(bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 14%, rgba(244,244,244,1) 58%, rgba(254,254,254,1) 76%);
-	background: -ms-linear-gradient(bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 14%, rgba(244,244,244,1) 58%, rgba(254,254,254,1) 76%);
-	background: linear-gradient(to up, rgba(226,226,226,1) 0%, rgba(209,209,209,1) 0%, rgba(219,219,219,1) 14%, rgba(244,244,244,1) 58%, rgba(254,254,254,1) 76%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
+	background: rgba(226, 226, 226, 1);
+	background: -moz-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -webkit-gradient(bottom top, up top, color-stop(0%, rgba(226, 226, 226,
+		1)), color-stop(0%, rgba(209, 209, 209, 1)),
+		color-stop(14%, rgba(219, 219, 219, 1)),
+		color-stop(58%, rgba(244, 244, 244, 1)),
+		color-stop(76%, rgba(254, 254, 254, 1)));
+	background: -webkit-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -o-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: -ms-linear-gradient(bottom, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	background: linear-gradient(to up, rgba(226, 226, 226, 1) 0%,
+		rgba(209, 209, 209, 1) 0%, rgba(219, 219, 219, 1) 14%,
+		rgba(244, 244, 244, 1) 58%, rgba(254, 254, 254, 1) 76%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2',
+		endColorstr='#fefefe', GradientType=1);
 }
 
 nav>ul>li>ul#lista_movil a {
@@ -249,6 +297,15 @@ nav>ul>li>ul#lista_movil li {
 	padding: 5px;
 }
 
+img.bandera {
+	width: 40px;
+	cursor: pointer;
+}
+
+.ingles {
+	display: none;
+}
+
 /* PRESENTACION
    ========================================================================= */
 .presentacion {
@@ -256,71 +313,20 @@ nav>ul>li>ul#lista_movil li {
 	font-size: 20px;
 	padding-top: 80px;
 	width: 90%;
-	margin: 0 auto; 	
-}
-
-.imagen {	
-	text-align: center;
-	padding-top: 170px;
-	width: 90%;
-	margin: 0 auto; 
-}
-
-.imagen img {
-	width: 50%;
-	min-width: 250px;
-	max-width: 1000px;
-}
-
-/* CIRCULOS
-   ========================================================================= */
-.contenedor_circulos {
-	text-align: center;
-	font-family: Montserrat-Bold;
-	margin-bottom: 50px;
 	margin: 0 auto;
 }
 
-.circulo {
-	border-radius: 250px;
+.imagen {
 	text-align: center;
-	height: 250px;
-	width: 250px;
-	display: inline-block;
-	margin: 20px;
-	font-size: 20px;
-	opacity: 1;
+	padding-top: 100px;
+	width: 90%;
+	margin: 0 auto;
 }
 
-.verde {
-	background-color: #9bd155;
-}
-
-.rojo {
-	background-color: #ff3123;
-}
-
-.amarillo {
-	background-color: #d8c12d;
-}
-
-.negro {
-	background-color: #3c3c3b;
-}
-
-.contenedor_circulos h2.bocaditos {
-	color: white;
-}
-
-.circulo h2 {
-	position: relative;
-	top: 45%;
-	color: black;
-	font-size: 20px;
-}
-
-.opacidad {
-	opacity: 1;
+.imagen img {
+	width: 65%;
+	min-width: 250px;
+	max-width: 700px;
 }
 
 /* RESEÑAS GOOGLE
@@ -335,7 +341,7 @@ nav>ul>li>ul#lista_movil li {
 .google h3 {
 	margin-bottom: 25px;
 	font-size: 19px;
-	text-align: center; 	
+	text-align: center;
 }
 
 .google a {
@@ -350,219 +356,29 @@ nav>ul>li>ul#lista_movil li {
 	margin-bottom: 10px;
 }
 
-/* RESERVAS Y TARIFAS
-   ========================================================================= */
-h3.titulo_reservas {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.contenedor_reservas {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: flex-start;
-	padding-top: 100px;
-}
-
-/* TARIFAS */
-.tarifas h3, .calendario h3, .texto_descriptivo h3 {
-	margin-bottom: 20px;
-}
-
-.texto_descriptivo ul {
-	font-size: 15px;
-}
-
-.tarifas {
-	margin: 10px 10px 25px;
-	width: 500px;
-	text-align: center;
-	display: inline-block;
-}
-
-.tarifas table p {
-	font-size: 12px;
-}
-
-.tarifas table p.subtitulo {
-	font-size: 10px;
-}
-
-.tarifas table td {
-	width: 25%;
-}
-
-.explicacion_tarifas {
-	margin: 25px;
-	text-align: left;
-}
-
-.explicacion_tarifas ul {
-	margin-left: 25px;
-	font-size: 15px;
-}
-
-.explicacion_tarifas ul>li {
-	margin-bottom: 15px;
-}
-
-.titulo_verde {
-	background-color: #9bd155;
-	height: 50px;
-}
-
-.titulo_amarillo {
-	background-color: #d8c12d;
-	height: 50px;
-}
-
-.tarifas img {
-	height: 280px;
-}
-
-/* CALENDARIO */
-.ordenador {
-	display: none;
-}
-
-.calendario {
-	margin: 5px;
-	width: 500px;
-	text-align: center;
-	display: inline-block;
-}
-
-.texto_descriptivo {
-	margin: 5px;
-	width: 80%;
-	text-align: left;
-	display: inline-block;
-	padding: 0 10px;
-}
-
-.ordenador {
-	display: none;
-}
-
-.calendario iframe {
-	height: 300px;
-	width: 300px;
-}
-
-.contenedor_formulario {
-	margin: 50px 10px;
-	text-align: center;
-}
-
-.formulario {
-	width: 100%;
-	margin: 0 auto;
-	font-size: 15px;
-}
-
-.formulario h2 {
-	text-align: center;
-	margin: 10px;
-	margin-bottom: 25px;
-}
-
-.formulario input {
-	width: 50%;
-	margin-bottom: 5px;
-}
-
-.formulario textarea.comentario {
-	width: 50%;
-	margin-left: 21px;
-}
-
-.formulario textarea.consulta {
-	width: 50%;
-	margin-left: 49px;
-}
-
-.formulario input.nombre {
-	margin-left: 50px;
-}
-
-.formulario input.mail {
-	margin-left: 70px;
-}
-
-.formulario input.telefono {
-	margin-left: 50px;
-}
-
-.formulario input.dia {
-	margin-left: 87px;
-}
-
-.formulario input.hora_entrada {
-	margin-left: 17px;
-}
-
-.formulario input.hora_salida {
-	margin-left: 33px;
-}
-
-.formulario input#condiciones, .formulario input#whatsapp {
-	margin-left: 0;
-	width: 20px;
-	margin-top: 25px;
-}
-
-.condiciones, .whatsapp {
-	text-align: left;
-	margin-left: 10px;
-}
-
-form a {
-	color: black;
-}
-
-form a:hover {
-	#9bd155
-}
-
-.boton {
-	text-align: center;
-}
-
-.btn {
-	margin-top: 15px;
-	font-family: Montserrat-UltraLight;
-	font-size: 15px;
-	border-radius: 5px;
-	padding: 6px;
-}
-
-.btn:hover {
-	color: grey;
-}
-
-.btn:active {
-	padding: 8px 4px 4px 8px;
-}
-
 /* EVENTOS Y BLOG
    ========================================================================= */
 .evento_principal {
 	text-align: center;
 }
+
 .evento_principal h3, .explicacion_blog h3 {
 	font-size: 20px;
 	margin: 0 10px;
 }
+
 .contenedor_articulo_secundario {
 	margin: 20px auto;
 }
+
 img.img_ordenador {
 	display: none;
 }
+
 .evento_principal img {
 	height: 450px;
 }
+
 .explicacion_evento, .explicacion_articulo {
 	width: 80%;
 	margin: 20px auto;
@@ -582,7 +398,8 @@ h3.eventos_pasados {
 	text-align: center;
 }
 
-.evento_secundario > .explicacion_evento, .articulo_secundario > .explicacion_articulo {
+.evento_secundario>.explicacion_evento, .articulo_secundario>.explicacion_articulo
+	{
 	width: 100%;
 	margin: 20px 0;
 }
@@ -655,17 +472,17 @@ h3.eventos_pasados {
 
 .select_productos select {
 	margin-top: 10px;
-    padding: 3px 5px;
-    border: solid 1px grey;
-    border-radius: 10px;
-    box-shadow: 3px 7px #888888;
-    background-color: #9bd155;
-    font-family: Montserrat-UltraLight;
-    font-size: 15px;
+	padding: 3px 5px;
+	border: solid 1px grey;
+	border-radius: 10px;
+	box-shadow: 3px 7px #888888;
+	background-color: #9bd155;
+	font-family: Montserrat-UltraLight;
+	font-size: 15px;
 }
 
 select:focus {
-    outline:0px;
+	outline: 0px;
 }
 
 .contenedor_productos h3 {
@@ -684,7 +501,7 @@ ul.lista_productos, ul.lista_productos_comida {
 }
 
 ul.lista_productos_comida {
-	width: 90%;	
+	width: 90%;
 	margin: 0 auto;
 }
 
@@ -801,7 +618,6 @@ img.queso {
 }
 
 /* MENÚS NAVIDAD */
-
 .img_lista_menus img {
 	width: auto;
 	height: 550px;
@@ -809,7 +625,6 @@ img.queso {
 }
 
 /* MENÚS INFANTILES */
-
 .menu_infantil {
 	padding: 15px;
 	background-color: #f5f5f5;
@@ -846,49 +661,61 @@ img.queso {
 	margin-bottom: 15px;
 	padding-top: 80px;
 }
+
 .explicacion_articulo {
 	width: 80%;
 	margin: 0 auto;
 	margin-bottom: 15px;
 	padding-top: 30px;
 }
+
 .fechaArticulo p {
 	text-align: center;
 }
+
 .ultimo {
 	padding-top: 0;
 }
+
 .explicacion_blog h3 {
 	text-align: center;
 	margin-bottom: 30px;
 	font-size: 25px;
 }
+
 h3.titulo_articulo {
 	text-align: center;
 	font-size: 18px;
 	margin-bottom: 25px;
 }
+
 .texto_leerMas {
-	display:none;
+	display: none;
 }
+
 .leerMenos {
-	display:none;
+	display: none;
 }
+
 .leerMas, .leerMenos {
 	color: #ff3123;
 	cursor: pointer;
 }
+
 .img_articulo {
 	width: 80%;
 	margin-top: 25px;
 }
+
 .img_articulo_secundaria {
 	width: 90%;
 }
+
 p.pieFoto {
 	color: grey;
 	font-size: 12px;
 }
+
 .articulo {
 	text-align: center;
 	margin-bottom: 30px;
@@ -913,6 +740,102 @@ p.pieFoto {
 
 .contenedor_contacto a:hover {
 	color: #d8c12d;
+}
+
+/* Formulario */
+.contenedor_formulario {
+	margin: 50px 10px;
+	text-align: center;
+}
+
+.formulario {
+	width: 100%;
+	margin: 0 auto;
+	font-size: 15px;
+}
+
+.formulario h2 {
+	text-align: center;
+	margin: 10px;
+	margin-bottom: 25px;
+}
+
+.formulario input {
+	width: 50%;
+	margin-bottom: 5px;
+}
+
+.formulario textarea.comentario {
+	width: 50%;
+	margin-left: 21px;
+}
+
+.formulario textarea.consulta {
+	width: 50%;
+	margin-left: 49px;
+}
+
+.formulario input.nombre {
+	margin-left: 50px;
+}
+
+.formulario input.mail {
+	margin-left: 70px;
+}
+
+.formulario input.telefono {
+	margin-left: 50px;
+}
+
+.formulario input.dia {
+	margin-left: 87px;
+}
+
+.formulario input.hora_entrada {
+	margin-left: 17px;
+}
+
+.formulario input.hora_salida {
+	margin-left: 33px;
+}
+
+.formulario input#condiciones, .formulario input#whatsapp {
+	margin-left: 0;
+	width: 20px;
+	margin-top: 25px;
+}
+
+.condiciones, .whatsapp {
+	text-align: left;
+	margin-left: 10px;
+}
+
+form a {
+	color: black;
+}
+
+form a:hover {
+	color: #9bd155;
+}
+
+.boton {
+	text-align: center;
+}
+
+.btn {
+	margin-top: 15px;
+	font-family: Montserrat-UltraLight;
+	font-size: 15px;
+	border-radius: 5px;
+	padding: 6px;
+}
+
+.btn:hover {
+	color: grey;
+}
+
+.btn:active {
+	padding: 8px 4px 4px 8px;
 }
 
 /* TEXTOS LEGALES
@@ -1049,7 +972,6 @@ footer h3 {
 
 /* Para resoluciones a partir de 500px */
 @media only screen and (min-width: 500px) {
-	
 	.recogida_producto_comida img {
 		width: 55px;
 	}
@@ -1078,18 +1000,16 @@ footer h3 {
 	.menu_infantil {
 		width: 400px;
 	}
-	
 }
 
 /* Para resoluciones a partir de 600px */
 @media only screen and (min-width: 600px) {
-	
 	nav>ul>li>ul#lista_movil a {
 		color: black;
 		font-size: 19px;
 	}
-	nav>#lista_principal_index {
-		padding-top: 25px;
+	nav>#lista_principal_index ul {
+		padding-top: 5px;
 	}
 	#inicio img {
 		height: 65px;
@@ -1169,7 +1089,7 @@ footer h3 {
 		font-size: 22px;
 	}
 	.imagenes_menu_infantil img {
-		height: 600px;	
+		height: 600px;
 		width: auto;
 		padding: 20px;
 	}
@@ -1192,10 +1112,8 @@ footer h3 {
 	}
 }
 
-
 /* Para resoluciones a partir de 700px */
 @media only screen and (min-width: 700px) {
-	
 	.recogida_producto_comida img {
 		width: 65px;
 	}
@@ -1212,7 +1130,6 @@ footer h3 {
 
 /* Para resoluciones a partir de 800px */
 @media only screen and (min-width: 800px) {
-	
 	h1 {
 		font-size: 30px;
 	}
@@ -1220,11 +1137,11 @@ footer h3 {
 		font-size: 25px;
 	}
 	.select_productos select {
-	    padding: 5px 8px;
-	    font-size: 20px;
+		padding: 5px 8px;
+		font-size: 20px;
 	}
 	nav>#lista_principal_index {
-		font-size: 24px;
+		font-size: 18px;
 	}
 	.circulo h2 {
 		font-size: 23px;
@@ -1304,7 +1221,6 @@ footer h3 {
 
 /* Para resoluciones a partir de 880px */
 @media only screen and (min-width: 880px) {
-
 	h1 {
 		margin-top: 50px;
 	}
@@ -1318,33 +1234,23 @@ footer h3 {
 
 /* Para resoluciones a partir de 1000px */
 @media only screen and (min-width: 1000px) {
-	
 	.recogida_producto_comida img {
 		width: 75px;
 	}
 	nav>#lista_principal_index {
 		margin-top: -25px;
-		font-size: 19px;
 	}
 	nav>ul>li {
 		padding: 9px;
 	}
-	#inicio img {
-		margin-top: -20px;
+	#inicio {
+		padding-top: 10px;
 	}
-	.circulo {
-		border-radius: 250px;
-		text-align: center;
-		height: 250px;
-		width: 250px;
-		display: inline-block;
-		margin: 20px;
-		font-size: 20px;
-		opacity: 0.85;
+	nav>ul>li#menu_moviles {
+		padding-top: 10px;
 	}
-	.circulo:hover {
-		opacity: 1;
-		transition: opacity 1s;
+	.imagen {
+		padding-top: 150px;
 	}
 	.evento_principal h3, .explicacion_blog h3 {
 		font-size: 30px;
@@ -1491,7 +1397,7 @@ footer h3 {
 		font-size: 25px;
 	}
 	.imagenes_menu_infantil img {
-		height: 800px;	
+		height: 800px;
 		max-width: 500px;
 		padding: 20px;
 	}
@@ -1499,7 +1405,7 @@ footer h3 {
 		margin: 80px 25px;
 	}
 	.explicacion_articulo h3 {
-		font-size:35px;
+		font-size: 35px;
 	}
 	.ultimo {
 		padding-top: 0;
@@ -1511,11 +1417,10 @@ footer h3 {
 
 /* Para resoluciones a partir de 1100px */
 @media only screen and (min-width: 1100px) {
-	
 	.informacion ul, .informacion h3 {
 		display: block;
 	}
-	#sobreNosotros, #consultoria, #enEmpresa,  #campaign, #contacto, #blog {
+	#sobreNosotros, #consultoria, #enEmpresa, #campaign, #contacto, #blog {
 		display: block;
 	}
 	nav>ul>li#menu_moviles, #menu_consultoria {
@@ -1524,7 +1429,7 @@ footer h3 {
 	.contenedor_circulos {
 		max-width: 1000px;
 	}
-	.circulo { 
+	.circulo {
 		border-radius: 300px;
 		text-align: center;
 		height: 300px;
@@ -1536,17 +1441,20 @@ footer h3 {
 	.avisoLegal_movil {
 		display: none;
 	}
+	.bandera {
+		padding-right: 10px;
+	}
 }
 
 /* Para resoluciones a partir de 1250px */
 @media only screen and (min-width: 1250px) {
-	
 	h1 {
 		margin-top: 60px;
 		font-size: 35px;
 	}
 	#inicio {
 		display: inline-block;
+		padding-top: 20px;
 	}
 	.titulo_movil {
 		display: none;
@@ -1557,7 +1465,12 @@ footer h3 {
 	nav>ul>li {
 		padding: 20px;
 	}
-	.circulo { 
+	nav>#lista_principal_index #sobreNosotros, nav>#lista_principal_index #consultoria,
+		nav>#lista_principal_index #campaign, nav>#lista_principal_index #contacto,
+		nav>#lista_principal_index #blog {
+		padding-top: 35px;
+	}
+	.circulo {
 		margin: 70px;
 	}
 	.evento_principal img {
@@ -1581,12 +1494,13 @@ footer h3 {
 	.condiciones, .whatsapp {
 		margin-left: 50px;
 	}
-	
+	img.bandera {
+		width: 50px;
+	}
 }
 
 /* Para resoluciones a partir de 1400px */
 @media only screen and (min-width: 1400px) {
-	
 	nav>#lista_principal_index {
 		font-size: 22px;
 	}
@@ -1604,7 +1518,7 @@ footer h3 {
 		margin-left: 60px;
 	}
 	ul.lista_productos_comida {
-		width: 70%;	
+		width: 70%;
 	}
 	.contenedor_formulario {
 		margin: 100px 25px;
@@ -1612,17 +1526,13 @@ footer h3 {
 	.explicacion_blog {
 		padding-top: 130px;
 	}
-	.contenedor_circulos {
-		max-width: 1600px;
-	}
-	.circulo {
-		margin: 20px;
+	.imagen {
+		padding-top: 170px;
 	}
 }
 
 /* Para resoluciones a partir de 1600px */
 @media only screen and (min-width: 1600px) {
-	
 	.recogida_producto_comida img {
 		width: 85px;
 	}
@@ -1635,5 +1545,4 @@ footer h3 {
 		height: 330px;
 		width: 330px;
 	}
-	
 }

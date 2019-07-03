@@ -1,10 +1,10 @@
 <?php
 
 require_once '../clases/Correo.php';
-require_once '../clases/Validaciones.php';
+require_once '../inc/defines.inc.php';
+require_once '../inc/validaciones.inc.php';
 
 $correo = new Correo();
-$validaciones = new Validaciones();
 
 if(isset($_REQUEST['enviar'])){
     
@@ -22,7 +22,7 @@ if(isset($_REQUEST['enviar'])){
             
             if ($telefono != "" && $telefono != null) {
                 
-                if (!$validaciones->validarTelefono($telefono)) {
+                if (!validarTelefono($telefono)) {
                     $telefonoValido = false;
                 }
             } else {

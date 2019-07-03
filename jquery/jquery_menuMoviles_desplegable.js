@@ -10,12 +10,12 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#consultoria').on('mouseenter',function(e) {
+	$('.desplegable a').on('mouseenter',function(e) {
 		e.stopPropagation();
 		$("#menu_consultoria").slideDown("slow");
 	});
 	
-	$('#consultoria').on('mouseleave',function(e) {
+	$('.desplegable').on('mouseleave',function(e) {
 		e.stopPropagation();
 		$("#menu_consultoria").slideUp("slow");
 	});

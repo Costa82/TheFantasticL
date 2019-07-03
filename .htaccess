@@ -8,6 +8,8 @@ RewriteRule ^consultoria/ php/consultoria.php [L]
 RewriteRule ^campaign-management/ php/campaignManagement.php [L]
 RewriteRule ^contacto/ php/contacto.php [L]
 RewriteRule ^blog/ php/blog.php [L]
+RewriteRule ^administrador/ php/administrador.php [L]
+RewriteRule ^pagina-administrador/ php/administrador_index.php [L]
 
 RewriteRule ^envio-correcto php/envioCorrecto.php [L]
 RewriteRule ^envio-fallido php/envioFallido.php [L]

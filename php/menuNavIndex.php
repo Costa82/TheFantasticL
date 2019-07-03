@@ -3,11 +3,11 @@
 echo "<ul id='lista_principal_index'>
         <li id='inicio'><a href='inicio' title='Inicio'><img src='img/logos/TheFantasticL.png' alt='The Fantastic L'/></a></li>
         <li id='sobreNosotros'><a href='sobre-nosotros/' title='Sobre nosotros'>Sobre nosotros</a></li>
-        <li id='consultoria'><a href='' title='Consultoría'>Consultoría</a>
+        <li id='consultoria' class='desplegable'><a href='' title='Consultoría'>Consultoría</a>
             <ul id='menu_consultoria'>
-                    <li id='enEmpresa'><a href='en-empresa/' title='En Empresa'>En Empresa</a></li>
-                    <li id='workshops'><a href='workshops/' title='Workshops'>Workshops</a></li>
-                    <li id='adHoc'><a href='ad-hoc/' title='Ad Hoc'>Ad Hoc</a></li>
+                    <li id='enEmpresa'><a href='consultoria/' title='En Empresa'>En Empresa</a></li>
+                    <li id='workshops'><a href='consultoria/' title='Workshops'>Workshops</a></li>
+                    <li id='adHoc'><a href='consultoria/' title='Ad Hoc'>Ad Hoc</a></li>
             </ul>
         </li>
         <li id='campaign'><a href='campaign-management/' title='Campaign Management'>Campaign Management</a></li>
@@ -19,9 +19,9 @@ echo "<ul id='lista_principal_index'>
                 <li id='sobreNosotros2'><a href='sobre-nosotros/' title='Sobre nosotros'>Sobre nosotros</a></li>
                 <li id='consultoria2'><a href='consultoria/' title='Consultoría'>Consultoría</a>        
                     <ul id='menu_consultoria2'>
-                        <li id='enEmpresa'><a href='en-empresa/' title='En Empresa'>En Empresa</a></li>
-                        <li id='workshops'><a href='workshops/' title='Workshops'>Workshops</a></li>
-                        <li id='adHoc'><a href='ad-hoc/' title='Ad Hoc'>Ad Hoc</a></li>
+                        <li id='enEmpresa'><a href='consultoria/' title='En Empresa'>En Empresa</a></li>
+                        <li id='workshops'><a href='consultoria/' title='Workshops'>Workshops</a></li>
+                        <li id='adHoc'><a href='consultoria/' title='Ad Hoc'>Ad Hoc</a></li>
                     </ul>        
                 </li>
                 <li id='campaign2'><a href='campaign-management/' title='Campaign Management'>Campaign Management</a></li>
@@ -29,5 +29,6 @@ echo "<ul id='lista_principal_index'>
                 <li id='blog2'><a href='blog/' title='Blog'>Blog</a></li>
             </ul>
         </li>
+        <li id='idioma'><img class='bandera espanola' src='img/banderas/bandera_espanola.png' alt='Español' title='Español'/><img class='bandera inglesa' src='img/banderas/bandera_inglesa.png' alt='Inglés' title='Inglés'/></li>
     
       <ul>";
