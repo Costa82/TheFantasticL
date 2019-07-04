@@ -5,7 +5,6 @@
 
 <?php
 include_once ("clases/Textos.php");
-header('Content-Type: text/html; charset=UTF-8');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -17,6 +16,7 @@ header('Content-Type: text/html; charset=UTF-8');
 <meta name="description" content="" />
 <meta name="robots" content="NOODP" />
 <title>The Fantastic L</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
 
 <script>

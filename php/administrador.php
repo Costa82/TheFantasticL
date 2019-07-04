@@ -30,11 +30,9 @@ require_once '../inc/validaciones.inc.php';
     var rutacss1 = "../css/font-awesome.css?" + Math.random();
     var rutacss2 = "../css/main.css?" + Math.random();
     var rutacss3 = "../css/form-elements.css?" + Math.random();
-    var rutacss4 = "../css/style.css?" + Math.random();
     document.write('<link rel="stylesheet" href="' + rutacss1 + '" type="text/css" media="screen" />'); 
     document.write('<link rel="stylesheet" href="' + rutacss2 + '" type="text/css" media="screen" />'); 
     document.write('<link rel="stylesheet" href="' + rutacss3 + '" type="text/css" media="screen" />'); 
-    document.write('<link rel="stylesheet" href="' + rutacss4 + '" type="text/css" media="screen" />'); 
 </script>
 
 </head>

@@ -1,23 +1,9 @@
-/* main.css de toda la página */
+/* main.css de toda la pÃ¡gina */
 @charset "ISO-8859-1";
-
-@font-face {
-	font-family: Montserrat-Bold;
-	src: url(../fonts/Montserrat-Bold.ttf);
-}
-
-@font-face {
-	font-family: Montserrat-UltraLight;
-	src: url(../fonts/Montserrat-UltraLight.otf);
-}
 
 h1, h2, h3, h4, p, ul, body {
 	margin: 0;
 	padding: 0;
-}
-
-h1, h2, h3, h4 {
-	font-family: Montserrat-Bold;
 }
 
 ul {
@@ -35,7 +21,7 @@ html {
 	overflow-x: hidden;
 	font-size: 20px;
 	position: relative;
-	font-family: Montserrat-UltraLight;
+	font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -127,7 +113,6 @@ nav {
 nav>ul {
 	display: flex;
 	justify-content: space-around;
-	font-family: Montserrat-Bold;
 	position: fixed;
 	background-color: white;
 	margin-top: -20px;
@@ -201,7 +186,7 @@ nav>ul>li {
 }
 
 nav>ul>li#consultoria {
-	/* Hay que tener cuidado si cambiamos de idioma o añadimos palabras más largas porque se cortarán */
+	/* Hay que tener cuidado si cambiamos de idioma o aÃ±adimos palabras mÃ¡s largas porque se cortarÃ¡n */
 	width: 132px;
 }
 
@@ -299,7 +284,9 @@ nav>ul>li>ul#lista_movil li {
 
 img.bandera {
 	width: 40px;
+	border-radius: 6px;
 	cursor: pointer;
+	margin-right: 10px;
 }
 
 .ingles {
@@ -329,7 +316,7 @@ img.bandera {
 	max-width: 700px;
 }
 
-/* RESEÑAS GOOGLE
+/* RESEÃ‘AS GOOGLE
    ========================================================================= */
 .google {
 	margin: 25px auto;
@@ -477,7 +464,6 @@ h3.eventos_pasados {
 	border-radius: 10px;
 	box-shadow: 3px 7px #888888;
 	background-color: #9bd155;
-	font-family: Montserrat-UltraLight;
 	font-size: 15px;
 }
 
@@ -617,14 +603,14 @@ img.queso {
 	height: 300px;
 }
 
-/* MENÚS NAVIDAD */
+/* MENÃšS NAVIDAD */
 .img_lista_menus img {
 	width: auto;
 	height: 550px;
 	padding: 15px;
 }
 
-/* MENÚS INFANTILES */
+/* MENÃšS INFANTILES */
 .menu_infantil {
 	padding: 15px;
 	background-color: #f5f5f5;
@@ -742,7 +728,232 @@ p.pieFoto {
 	color: #d8c12d;
 }
 
-/* Formulario */
+/* FORMULARIOS
+   ========================================================================= */
+h3.error {
+	color: red;
+}
+
+h3.noerror {
+	color: blue;
+}
+
+label {
+	font-size: 18px;
+	width: 100%;
+	text-align: left;
+}
+
+.derecha {
+	float: right;
+}
+
+.izquierda {
+	float: left;
+}
+
+.container {
+	width: 100%;
+	min-width: 250px;
+	margin: 0 auto;
+	margin-top: -80px;
+}
+
+#errores {
+	color: red;
+	font-size: 20px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+#errores h3 {
+	color: red;
+}
+
+::-moz-selection {
+	background: #4aaf51;
+	color: #fff;
+	text-shadow: none;
+}
+
+::selection {
+	background: #4aaf51;
+	color: #fff;
+	text-shadow: none;
+}
+
+.btn-link-1 {
+	display: inline-block;
+	height: 50px;
+	margin: 5px;
+	padding: 16px 20px 0 20px;
+	background: #4aaf51;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 16px;
+	color: #fff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active {
+	outline: 0;
+	opacity: 0.6;
+	color: #fff;
+}
+
+.btn-link-1.btn-link-1-facebook {
+	background: #4862a3;
+}
+
+.btn-link-1.btn-link-1-twitter {
+	background: #55acee;
+}
+
+.btn-link-1.btn-link-1-google-plus {
+	background: #dd4b39;
+}
+
+.btn-link-1 i {
+	padding-right: 5px;
+	vertical-align: middle;
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.btn-link-2 {
+	display: inline-block;
+	height: 50px;
+	margin: 5px;
+	padding: 15px 20px 0 20px;
+	background: rgba(0, 0, 0, 0.3);
+	border: 1px solid #fff;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 16px;
+	color: #fff;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.btn-link-2:hover, .btn-link-2:focus, .btn-link-2:active, .btn-link-2:active:focus
+	{
+	outline: 0;
+	opacity: 0.6;
+	background: rgba(0, 0, 0, 0.3);
+	color: #fff;
+}
+
+/***** Top content *****/
+.inner-bg {
+	padding: 0 0 50px 0;
+	margin-top: 0;
+}
+
+.top-content .text {
+	color: #fff;
+}
+
+.top-content .text h1 {
+	color: #fff;
+}
+
+.top-content .description {
+	margin: 20px 0 10px 0;
+}
+
+.top-content .description p {
+	opacity: 0.9;
+}
+
+.top-content .description a {
+	color: #fff;
+}
+
+.top-content .description a:hover, .top-content .description a:focus {
+	border-bottom: 1px dotted #fff;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 25px 15px 25px;
+	background: #fff;
+	opacity: 0.9;
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	text-align: left;
+}
+
+.form-top-left {
+	float: left;
+	width: 100%;
+	padding-top: 25px;
+}
+
+.form-top-left h3 {
+	margin-top: 0;
+}
+
+.form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+.form-bottom {
+	padding: 25px 45px 30px 25px;
+	background: #eee;
+	opacity: 0.9;
+	-moz-border-radius: 0 0 4px 4px;
+	-webkit-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
+.form-bottom form textarea {
+	height: 100px;
+}
+
+.form-bottom form button.btn {
+	width: 60%;
+	cursor: pointer;
+	min-width: 140px;
+	margin-top: 15px;
+}
+
+.form-bottom form .input-error {
+	border-color: #4aaf51;
+}
+
+label .fa {
+	color: #7892c2;
+	font-size: 20px;
+	margin-left: 5px;
+	cursor: help;
+	padding-right: 0;
+}
+
+.tooltip {
+	color: black;
+	font-size: 15px;
+	position: absolute;
+	background-color: #eeeefe;
+	border: 1px solid #aaaaca;
+	border-radius: 5px;
+	padding: 4px;
+	width: 200px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
 .contenedor_formulario {
 	margin: 50px 10px;
 	text-align: center;
@@ -824,7 +1035,6 @@ form a:hover {
 
 .btn {
 	margin-top: 15px;
-	font-family: Montserrat-UltraLight;
 	font-size: 15px;
 	border-radius: 5px;
 	padding: 6px;
@@ -840,6 +1050,17 @@ form a:hover {
 
 /* TEXTOS LEGALES
    ========================================================================= */
+.contenedorAvisoLegal {
+	width: 80%;
+	opacity: 0.8;
+	margin: 50px auto;
+	background-color: white;
+	-webkit-box-shadow: 3px 6px 20px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 3px 6px 20px 0px rgba(0, 0, 0, 0.75);
+	color: black;
+	padding: 25px;
+}
+
 .contenedor_texto {
 	width: 90%;
 	margin: 20px auto;
@@ -1306,7 +1527,6 @@ footer h3 {
 	}
 	.btn {
 		margin-top: 15px;
-		font-family: Montserrat-UltraLight;
 		font-size: 15px;
 		border-radius: 5px;
 		padding: 6px;
@@ -1441,9 +1661,6 @@ footer h3 {
 	.avisoLegal_movil {
 		display: none;
 	}
-	.bandera {
-		padding-right: 10px;
-	}
 }
 
 /* Para resoluciones a partir de 1250px */
@@ -1496,6 +1713,7 @@ footer h3 {
 	}
 	img.bandera {
 		width: 50px;
+		height: 30px;
 	}
 }
 

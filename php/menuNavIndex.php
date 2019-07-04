@@ -29,6 +29,6 @@ echo "<ul id='lista_principal_index'>
                 <li id='blog2'><a href='blog/' title='Blog'>Blog</a></li>
             </ul>
         </li>
-        <li id='idioma'><img class='bandera espanola' src='img/banderas/bandera_espanola.png' alt='Español' title='Español'/><img class='bandera inglesa' src='img/banderas/bandera_inglesa.png' alt='Inglés' title='Inglés'/></li>
+        <li id='idioma'><img class='bandera espanola' src='img/banderas/Spain.png' alt='Español' title='Español'/><img class='bandera inglesa' src='img/banderas/United-Kingdom.png' alt='Inglés' title='Inglés'/></li>
     
       <ul>";
