@@ -35,4 +35,4 @@ spl_autoload_register(function ($nombre_clase) {
         header('Location:' . $destino);
         exit();
     }
-    ?>
+?>

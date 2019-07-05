@@ -185,11 +185,6 @@ nav>ul>li {
 	padding-top: 2px;
 }
 
-nav>ul>li#consultoria {
-	/* Hay que tener cuidado si cambiamos de idioma o añadimos palabras más largas porque se cortarán */
-	width: 132px;
-}
-
 nav>ul>li a {
 	color: black;
 }
@@ -289,11 +284,7 @@ img.bandera {
 	margin-right: 10px;
 }
 
-.ingles {
-	display: none;
-}
-
-/* PRESENTACION
+/* CONTENIDO Y TEXTOS
    ========================================================================= */
 .presentacion {
 	text-align: center;
@@ -316,31 +307,8 @@ img.bandera {
 	max-width: 700px;
 }
 
-/* RESEÑAS GOOGLE
-   ========================================================================= */
-.google {
-	margin: 25px auto;
-	width: 80%;
-	max-width: 700px;
-	min-width: 250px;
-}
-
-.google h3 {
-	margin-bottom: 25px;
-	font-size: 19px;
-	text-align: center;
-}
-
-.google a {
-	color: #ff3123;
-}
-
-.resenas_google {
-	margin: 30px 0;
-}
-
-.resenas_google .nombre {
-	margin-bottom: 10px;
+.ingles {
+	display: none;
 }
 
 /* EVENTOS Y BLOG
@@ -1713,7 +1681,6 @@ footer h3 {
 	}
 	img.bandera {
 		width: 50px;
-		height: 30px;
 	}
 }
 
