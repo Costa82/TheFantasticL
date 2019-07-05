@@ -284,6 +284,10 @@ img.bandera {
 	margin-right: 10px;
 }
 
+.espanola {
+	display: none;
+}
+
 /* CONTENIDO Y TEXTOS
    ========================================================================= */
 .presentacion {

@@ -4,12 +4,16 @@ $(document).ready(function() {
 		e.stopPropagation();
 		$(".ingles").show();
 		$(".espanol").hide();
+		$(".inglesa").hide();
+		$(".espanola").show();
 	});
 	
 	$('.espanola').click(function(e) {
 		e.stopPropagation();
 		$(".espanol").show();
 		$(".ingles").hide();
+		$(".inglesa").show();
+		$(".espanola").hide();
 	});
 	
 });
