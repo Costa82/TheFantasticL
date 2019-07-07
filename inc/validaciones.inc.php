@@ -64,7 +64,7 @@ function validarContrasena($passNueva, $passRep)
  *            $num
  * @return $mensaje[]
  */
-function validacionExisteUsuario($num)
+function validacion($num)
 {
     global $mensaje; // importante la variable global para que reconozca $mensaje de 'defines.inc.php'
     if ($num == - 300) {
@@ -100,7 +100,7 @@ function validacionExisteUsuario($num)
     } elseif ($num == - 212) {
         return $mensaje[ADMIN_NO_PERMISOS];
     } elseif ($num == - 213) {
-        return $mensaje[TITULO_INCORRECTO];
+        return $mensaje[TITULO_EXISTE];
     } elseif ($num == - 214) {
         return $mensaje[AUTOR_INCORRECTO];
     } elseif ($num == - 215) {
@@ -113,6 +113,10 @@ function validacionExisteUsuario($num)
         return $mensaje[CONF_REGISTRO];
     } elseif ($num == - 307) {
         return $mensaje[ENVIO_MENSAJE_OK];
+    } elseif ($num == - 401) {
+        return $mensaje[TEXTO_SUBIDO_OK];
+    } elseif ($num == - 402) {
+        return $mensaje[TEXTO_SUBIDO_KO];
     }
 }
 
@@ -160,7 +164,7 @@ function validacionErrores($num)
     } elseif ($num == - 212) {
         return $mensaje[ADMIN_NO_PERMISOS];
     } elseif ($num == - 213) {
-        return $mensaje[TITULO_INCORRECTO];
+        return $mensaje[TITULO_EXISTE];
     } elseif ($num == - 214) {
         return $mensaje[AUTOR_INCORRECTO];
     } elseif ($num == - 215) {

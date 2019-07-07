@@ -54,6 +54,33 @@ class Textos
         
         return utf8_encode($cadena);
     }
+    
+    /**
+     * Función que comprueba si ya existe el titulo del texto.
+     *
+     * @param
+     *            $titulo
+     * @return boolean
+     */
+    public function existeTitulo($titulo)
+    {
+        // Igualamos a mayúsculas la búsqueda para evitar los problemas con mayúsculas y minúsculas
+        $tituloMinuscula = strtoupper($titulo);
+        
+        // $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo . "' AND UPPER(autor) ='" . $autor . "'";
+        $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo ."'";
+        if ($this->c->real_query($sql)) {
+            if ($resul = $this->c->store_result()) {
+                if ($resul->num_rows == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        } else {
+            return $this->c->errno . " -> " . $this->c->error;
+        }
+    }
 
     /**
      * muestra el texto correspondiente según el tipo pasado [BLOG, INFO, PRES, OTRO]
@@ -70,7 +97,9 @@ class Textos
             if ($resul = $this->c->store_result()) {
                 
                 if ($resul->num_rows > 0) {
+                    
                     while ($mostrar = $resul->fetch_assoc()) {
+                        
                         echo "<div class='presentacion espanol'>
 									<h1> " . $mostrar["titulo"] . "</h1>
 									<p> " . $mostrar["texto"] . "</p>";
@@ -83,6 +112,7 @@ class Textos
                         
                         echo "</div>";
                     }
+                    
                     $resul->free_result();
                 }
             }
@@ -90,6 +120,51 @@ class Textos
             echo $this->c->errno . " -> " . $this->c->error;
         }
     }
+
+    /**
+     * Función que añade el texto a BBDD
+     *
+     * @param
+     *            $titulo
+     * @param
+     *            $titulo_ingles
+     * @param
+     *            $tipo
+     * @param
+     *            $texto
+     * @param
+     *            $texto_ingles
+     * @param
+     *            $img
+     * @param
+     *            $fecha
+     * @return number
+     */
+    public function addTexto($titulo, $titulo_ingles, $tipo, $texto, $texto_ingles, $img, $fecha)
+    {
+        $foto = $this->guardarImgTexto($titulo, $img);
+        $tituloSinCaracteres = $this->quitarCaracteres($titulo);
+        $estado = "ACTV";
+        
+        $this->console_log($foto);
+        $this->console_log($tituloSinCaracteres);
+        $this->console_log($tipo);
+        $this->console_log($texto);
+        $this->console_log($fecha);
+        $this->console_log($estado);
+        
+        $sql = "INSERT INTO " . $this->tabla . " (titulo, fecha_publicacion, texto, imagen, cod_tipo_texto, cod_estado) VALUES(?,?,?,?,?,?)";
+        $sen = $this->c->prepare($sql);
+        $sen->bind_param("ssssss", $tituloSinCaracteres, $fecha, $texto, $img, $tipo, $estado);
+        
+        if ($sen->execute()) {            
+            return - 401; // Texto subido correctamente
+            
+        } else {
+            return - 402; // Texto no subido
+        }
+    }
+    
 
     /**
      * modificarLibro($id_libro,$titulo,$isbn,$autor,$sinopsis,$genero,$genero2,$resumen,$serie,$pelicula,$banner)
@@ -225,8 +300,8 @@ class Textos
     }
 
     /**
-     * guardarImgLibro($titulo,$archivo_img):
-     * Función utilizada dentro de la función addLibro,para guardar la imagen de portada
+     * guardarImgTexto($titulo,$archivo_img):
+     * Función utilizada dentro de la función addTexto,para guardar la imagen del texto si la tuviera.
      *
      * @param
      *            $titulo
@@ -240,6 +315,7 @@ class Textos
         $img_type = $archivo_img['type'];
         $img_tmp_name = $archivo_img['tmp_name'];
         $img_size = $archivo_img['size'];
+        
         if ($img_type == "image/jpeg" || $img_type == "image/pjpeg" || $img_type == "image/jpg") {
             $extension = "jpg";
         } elseif ($img_type == "image/png") {
@@ -247,30 +323,25 @@ class Textos
         } else {
             $extension = NULL;
         }
+        
         $ruta = "NULL";
         $rutaBD = "NULL";
-        $lugar = '../img_libros/';
+        $lugar = '../img/textos/';
+        
         // Validamos la imagen
         if ($img_name != NULL and $extension != NULL and $img_size != 0) {
+            
             if ($img_size <= $_REQUEST['lim_tamano']) {
+                
                 $nombre_img = $this->normaliza($titulo . "." . $extension);
                 $ruta = $lugar . $nombre_img;
-                // Guardamos la foto en la carpeta del proyecto "img_libros"
+                // Guardamos la foto en la carpeta del proyecto "img/textos"
                 move_uploaded_file($img_tmp_name, $ruta);
                 // Declaramos la ruta de la imagen en la base de datos
                 $rutaBD = $nombre_img;
-            } else {
-                $rutaOrigen = "../img_libros/libro_generico.jpg";
-                $rutaFinal = $this->normaliza($lugar . $titulo . ".png");
-                copy($rutaOrigen, $rutaFinal);
-                $rutaBD = $this->normaliza($titulo . ".png");
             }
-        } else { // en caso de que el usuario no inserte imagen
-            $rutaOrigen = "../img_libros/libro_generico.jpg";
-            $rutaFinal = $this->normaliza($lugar . $titulo . ".png");
-            copy($rutaOrigen, $rutaFinal);
-            $rutaBD = $this->normaliza($titulo . ".png");
         }
+        
         return $rutaBD;
     }
 
