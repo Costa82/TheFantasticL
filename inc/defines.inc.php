@@ -16,6 +16,7 @@ define("EMAIL_INCORRECTO", -209);//El email es incorrecto
 define("PASS_DIFERENTES", -210);//Debe introducir las dos contraseñas iguales
 define("NICK_INCORRECTO", -211);//El Nick no es válido, debe tener entre 4 y 8 caracteres.
 define("ADMIN_NO_PERMISOS", -212);//El administrador no tiene permisos para modificar a otro administrador
+define("TITULO_EXISTE", -213);//El título del texto ya existe
 define("AUTOR_INCORRECTO", -214);//El autor no es correcto (No puede empezar por números,sí puede contener espacios en blanco y no puede contener caracteres especiales)
 define("CODIGO_INCORRECTO", -216);//El codigo no es correcto
 define("CARACTERES_ESPECIALES", -217);//Los títulos de los libros no pueden contener caracteres especiales
@@ -27,6 +28,8 @@ define("PASS_INCORRECTO", -305);  // Contraseña incorrecta, debe tener entre 4 y
 define("CONF_REGISTRO", -306);  // Confirmar Registro
 define("USER_EXISTE", -300); //usuario que ya estaba registrado
 define("ENVIO_MENSAJE_OK", -307); //Mensaje enviado
+define("TEXTO_SUBIDO_OK", -401); //Texto subido correctamente.
+define("TEXTO_SUBIDO_KO", -402); //El texto no se pudo subir.
 define("ERROR_CONEXION", -666); //Error de conexion
 define("ERROR_ENVIO_MAIL", -667); //Error al enviar el email
 define("ERROR_ENVIO_MENSAJE", -668); //Error al enviar el mensaje
@@ -65,4 +68,8 @@ $mensaje[ERROR_ENVIO_MAIL] = "Error al enviar el email.";
 $mensaje[ERROR_ENVIO_MENSAJE] = "Error al enviar el mensaje.";
 $mensaje[ERROR_LIBRO_LISTA] = "Ya existe el libro en la lista.";
 $mensaje[ERROR_GENERAL] = "Error General.";
+
+$mensaje[TITULO_EXISTE] = "El título del texto ya existe.";
+$mensaje[TEXTO_SUBIDO_OK] = "Texto subido correctamente.";
+$mensaje[TEXTO_SUBIDO_KO] = "El texto no se pudo subir.";
 ?>

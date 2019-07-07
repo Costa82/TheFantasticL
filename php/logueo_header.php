@@ -16,17 +16,17 @@ spl_autoload_register(function ($nombre_clase) {
                     
                     require_once '../inc/funciones.php';
                     
-                    $destino = "../pagina_administrador/";
+                    $destino = "../pagina-administrador/";
                     
                 } else {
                     
                     $num = - 202;
-                    $destino = "../administrador/?num=$num";
+                    $destino = "../logueo-administrador/?num=$num";
                 }
             } else {
                 
                 $num = -201;
-                $destino = "../administrador/?num=$num";
+                $destino = "../logueo-administrador/?num=$num";
             }
         }
     }

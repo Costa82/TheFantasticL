@@ -17,7 +17,7 @@ require_once '../inc/validaciones.inc.php';
 	content="application/xhtml+xml; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Formulario de Inicio de sesión</title>
+<title>Inicio de sesión</title>
 
 <!-- CSS -->
 <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One'
@@ -49,7 +49,7 @@ require_once '../inc/validaciones.inc.php';
                             <?php
                             if (isset($_REQUEST['num'])) {
                                 $num = $_REQUEST['num'];
-                                $mensaje = validacionExisteUsuario($num);
+                                $mensaje = validacion($num);
                                 echo $mensaje;
                             }
                             ?>
