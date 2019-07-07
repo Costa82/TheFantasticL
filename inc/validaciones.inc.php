@@ -2,14 +2,14 @@
 require_once 'defines.inc.php';
 
 /**
- * La contraseña debe tener al entre 4 y 8 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
- * No puede tener otros símbolos.
+ * La contraseï¿½a debe tener al entre 4 y 8 caracteres, al menos un dï¿½gito, al menos una minï¿½scula y al menos una mayï¿½scula.
+ * No puede tener otros sï¿½mbolos.
  *
  * @param
  *            $pass
  * @return true si cumple con los requisitos
  */
-function esContraseña($pass)
+function esContraseï¿½a($pass)
 {
     /* ("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{4,8}$/",$pass) */
     if (preg_match("/^\S{4,16}$/", $pass)) {
@@ -20,7 +20,7 @@ function esContraseña($pass)
 }
 
 /**
- * Función que valida que el teléfono no sea raro
+ * Funciï¿½n que valida que el telï¿½fono no sea raro
  *
  * @param
  *            $value
@@ -38,14 +38,14 @@ function validarTelefono($value)
 }
 
 /**
- * Función que compara la dos contraseñas que introduce el usuario por el formulario cuando tiene la opción de
- * modificar la contraseña
+ * Funciï¿½n que compara la dos contraseÃ±as que introduce el usuario por el formulario cuando tiene la opciï¿½n de
+ * modificar la contraseï¿½a
  *
  * @param
  *            $passNueva
  * @param
  *            $passRep
- * @return boolean true si ambas coinciden. False si la contraseña repetida no es igual que la contraseña nueva
+ * @return boolean true si ambas coinciden. False si la contraseï¿½a repetida no es igual que la contraseÃ±a nueva
  */
 function validarContrasena($passNueva, $passRep)
 {
@@ -189,14 +189,14 @@ function validacionErrores($num)
 }
 
 /**
- * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras ó números
+ * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras ï¿½ nï¿½meros
  *
  * @param
  *            $nick
  */
 function esNick($nick)
 {
-    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ0-9.]{4,8}$/i", $nick)) {
+    if (preg_match("/^[A-Z \-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0-9.]{4,8}$/i", $nick)) {
         return true;
     } else {
         return false;
@@ -204,8 +204,8 @@ function esNick($nick)
 }
 
 /**
- * Un nombre ó apellido es válido si tiene un mímimo de 3 caracteres y un máximo de 20
- * Además, que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales
+ * Un nombre ï¿½ apellido es vï¿½lido si tiene un mï¿½mimo de 3 caracteres y un mï¿½ximo de 20
+ * Ademï¿½s, que no empiece por nï¿½meros,puede contener espacios en blanco y que no contenga caracteres especiales
  *
  * @param
  *            $nombre
@@ -214,10 +214,10 @@ function esNick($nick)
 function esNombreValido($nombre)
 {
     /**
-     * Que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales,
-     * un mímimo de 3 caracteres y un máximo de 20
+     * Que no empiece por nï¿½meros,puede contener espacios en blanco y que no contenga caracteres especiales,
+     * un mï¿½mimo de 3 caracteres y un mï¿½ximo de 20
      */
-    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ\\s]{3,20}/i", $nombre)) {
+    if (preg_match("/^[A-Z \-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\\s]{3,20}/i", $nombre)) {
         return true;
     } else {
         
@@ -262,11 +262,11 @@ function esCodigoCorrecto($codigo)
 }
 
 /**
- * Funcion a la que se le pasa un nombre simple ó compuesto y transforma la primera letra a Mayúsculas
+ * Funcion a la que se le pasa un nombre simple ï¿½ compuesto y transforma la primera letra a Mayï¿½sculas
  *
  * @param
  *            $nombre
- * @return string devuleve el nombre con la primera letra en mayúsculas
+ * @return string devuleve el nombre con la primera letra en mayï¿½sculas
  */
 function ponerLetraEnMayuscula($nombre)
 {
