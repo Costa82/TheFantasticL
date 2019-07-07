@@ -12,12 +12,12 @@ include_once ("../clases/Textos.php");
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="es-Es" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html" ; charset=utf-8 "/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
 <meta name="robots" content="NOODP" />
-<title>PÃ¡gina del administrador</title>
+<title>Página del administrador</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 	rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
@@ -89,12 +89,12 @@ include_once ("../clases/Textos.php");
 					class="login-form">
 					
 					<div class="form-group">
-						<label><span>* </span>TÃ­tulo</label> <input type="text"
+						<label><span>* </span>Título</label> <input type="text"
 							name="titulo" size="25" required="required" />
 					</div>
 					
 					<div class="form-group">
-						<label><span>* </span>TÃ­tulo en inglÃ©s</label> <input type="text"
+						<label><span>* </span>Título en inglés</label> <input type="text"
 							name="titulo_ingles" size="25" required="required" />
 					</div>
 
@@ -105,8 +105,8 @@ include_once ("../clases/Textos.php");
 						<select name="tipo">
 							<option value="OTRO" selected></option>
 							<option value="BLOG">Blog</option>
-							<option value="INFO">InformaciÃ³n</option>
-							<option value="PRES">PresentaciÃ³n</option>
+							<option value="INFO">Información</option>
+							<option value="PRES">Presentación</option>
 						</select>
 					</div>
 
@@ -116,13 +116,13 @@ include_once ("../clases/Textos.php");
 					</div>
 
 					<div class="form-group">
-						<label><span>* </span>Texto en inglÃ©s</label>
+						<label><span>* </span>Texto en inglés</label>
 						<textarea name="texto_ingles" rows="10" cols="40"
 							required="required"></textarea>
 					</div>
 
 					<div class="form-group">
-						<label>AÃ±ade una imagen</label> <input type="file" name="img" /><input
+						<label>Añade una imagen</label> <input type="file" name="img" /><input
 							type="hidden" name="lim_tamano" value="1000000" />
 					</div>
 

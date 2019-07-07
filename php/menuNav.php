@@ -13,9 +13,9 @@
     
     if (strpos($_SERVER['REQUEST_URI'], "consultoria") !== false) {
         // consultoria.php found
-        echo "<li id='consultoria'><a href='../consultoria/' title='Consultoria' class='seleccionado'>Consultoria</a></li>";
+        echo "<li id='consultoria'><a href='../consultoria/' title='Consultoría' class='seleccionado'>Consultoría</a></li>";
     } else {
-        echo "<li id='consultoria'><a href='../consultoria/' title='Consultoria'>Consultoria</a></li>";
+        echo "<li id='consultoria'><a href='../consultoria/' title='Consultoría'>Consultoría</a></li>";
     }
     
     if (strpos($_SERVER['REQUEST_URI'], "campaign") !== false) {
@@ -42,7 +42,7 @@
     echo "<li id='menu_moviles'><i class='fa fa-bars' aria-hidden='true'></i></a>
             <ul id='lista_movil'>
                 <li id='sobreNosotros2'><a href='../sobre-nosotros/' title='Sobre nosotros'>Sobre nosotros</a></li>
-                <li id='consultoria2'><a href='../consultoria/' title='ConsultorÃ­a'>ConsultorÃ­a</a>        
+                <li id='consultoria2'><a href='../consultoria/' title='Consultoría'>Consultoría</a>        
                     <ul id='menu_consultoria2'>
                         <li id='enEmpresa'><a href='../consultoria/' title='En Empresa'>En Empresa</a></li>
                         <li id='workshops'><a href='../consultoria/' title='Workshops'>Workshops</a></li>
@@ -54,5 +54,5 @@
                 <li id='blog2'><a href='../blog/' title='Blog'>Blog</a></li>
             </ul>
         </li>
-        <li id='idioma'><img class='bandera espanola' src='../img/banderas/bandera_espanola.svg' alt='EspaÃ±ol' title='EspaÃ±ol'/><img class='bandera inglesa' src='../img/banderas/bandera_inglesa.svg' alt='InglÃ©s' title='InglÃ©s'/></li>
+        <li id='idioma'><img class='bandera espanola' src='../img/banderas/bandera_espanola.svg' alt='EspaÃ±ol' title='EspaÃ±ol'/><img class='bandera inglesa' src='../img/banderas/bandera_inglesa.svg' alt='Inglés' title='Inglés'/></li>
         <ul>";
