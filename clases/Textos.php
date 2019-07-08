@@ -92,12 +92,9 @@ class Textos
     {
         $sql = "SELECT t.*, ti.* FROM " . $this->tabla . " t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'";
         
-        if ($this->c->real_query($sql)) {
-            
-            if ($resul = $this->c->store_result()) {
-                
-                if ($resul->num_rows > 0) {
-                    
+        if ($this->c->real_query($sql)) {            
+            if ($resul = $this->c->store_result()) {                
+                if ($resul->num_rows > 0) {                    
                     while ($mostrar = $resul->fetch_assoc()) {
                         
                         echo "<div class='presentacion espanol'>
@@ -112,7 +109,6 @@ class Textos
                         
                         echo "</div>";
                     }
-                    
                     $resul->free_result();
                 }
             }
@@ -142,20 +138,17 @@ class Textos
      */
     public function addTexto($titulo, $titulo_ingles, $tipo, $texto, $texto_ingles, $img, $fecha)
     {
-        $foto = $this->guardarImgTexto($titulo, $img);
+        $foto = NULL;
+        if (!is_null($img)) {
+            $foto = $this->guardarImgTexto($titulo, $img);
+        }
+        
         $tituloSinCaracteres = $this->quitarCaracteres($titulo);
         $estado = "ACTV";
         
-        $this->console_log($foto);
-        $this->console_log($tituloSinCaracteres);
-        $this->console_log($tipo);
-        $this->console_log($texto);
-        $this->console_log($fecha);
-        $this->console_log($estado);
-        
         $sql = "INSERT INTO " . $this->tabla . " (titulo, fecha_publicacion, texto, imagen, cod_tipo_texto, cod_estado) VALUES(?,?,?,?,?,?)";
         $sen = $this->c->prepare($sql);
-        $sen->bind_param("ssssss", $tituloSinCaracteres, $fecha, $texto, $img, $tipo, $estado);
+        $sen->bind_param("ssssss", $tituloSinCaracteres, $fecha, $texto, $foto, $tipo, $estado);
         
         if ($sen->execute()) {            
             return - 401; // Texto subido correctamente
@@ -324,14 +317,14 @@ class Textos
             $extension = NULL;
         }
         
-        $ruta = "NULL";
-        $rutaBD = "NULL";
+        $ruta = NULL;
+        $rutaBD = NULL;
         $lugar = '../img/textos/';
         
         // Validamos la imagen
         if ($img_name != NULL and $extension != NULL and $img_size != 0) {
             
-            if ($img_size <= $_REQUEST['lim_tamano']) {
+            if ($img_size <= 1000000) {
                 
                 $nombre_img = $this->normaliza($titulo . "." . $extension);
                 $ruta = $lugar . $nombre_img;

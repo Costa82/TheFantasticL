@@ -5,7 +5,7 @@ spl_autoload_register(function ($nombre_clase) {
 
 if (isset($_REQUEST['addTexto'])) {
     
-    if (! empty($_REQUEST['titulo'])) {
+    if (!empty($_REQUEST['titulo'])) {
         
         $textos = new Textos();
         $titulo = trim($_REQUEST['titulo']);
@@ -14,10 +14,10 @@ if (isset($_REQUEST['addTexto'])) {
         
         if (!$textos->existeTitulo($titulo)) {
             
-            // Título
+            // TÃ­tulo
             $titulo = trim($_REQUEST['titulo']);
             
-            // Título en inglés
+            // TÃ­tulo en inglÃ©s
             $titulo_ingles = trim($_REQUEST['titulo_ingles']);
             
             // Tipo de texto
@@ -26,16 +26,21 @@ if (isset($_REQUEST['addTexto'])) {
             // Texto
             $texto = $_REQUEST['texto'];
             
-            // Texto en inglés
+            // Texto en inglÃ‰s
             $texto_ingles = $_REQUEST['texto_ingles'];
             
             // Imagen
-            $img = $_FILES['img'];
+            $nombre_imagen = $_FILES['img']['name'];
+            if($nombre_imagen!=""){
+                $img = $_FILES['img'];
+            }else{
+                $img = NULL;
+            }
             
             // Fecha subida
             $fecha_subida = date("Y-m-d");
             
-            // Añadimos el texto
+            // Aï¿½adimos el texto
             $num = $textos->addTexto($titulo, $titulo_ingles, $tipo, $texto, $texto_ingles, $img, $fecha_subida);
         
         } else {
