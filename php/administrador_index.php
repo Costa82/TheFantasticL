@@ -20,7 +20,7 @@ include_once ("../clases/Textos.php");
 <title>Página del administrador</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 	rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
+<link type="text/css" rel="stylesheet" href="../css/font-awesome.css" />
 
 <!-- Metemos un aleatorio para el css y el jss -->
 <script>
@@ -49,16 +49,16 @@ include_once ("../clases/Textos.php");
 	rel='stylesheet' type='text/css' />
 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah"
 	rel="stylesheet" />
-<link href="apple-touch-icon.png" rel="apple-touch-icon" />
-<link href="apple-touch-icon-152x152.png" rel="apple-touch-icon"
+<link href="../img/iconos/apple-touch-icon.png" rel="apple-touch-icon" />
+<link href="../img/iconos/apple-touch-icon-152x152.png" rel="apple-touch-icon"
 	sizes="152x152" />
-<link href="apple-touch-icon-167x167.png" rel="apple-touch-icon"
+<link href="../img/iconos/apple-touch-icon-167x167.png" rel="apple-touch-icon"
 	sizes="167x167" />
-<link href="apple-touch-icon-180x180.png" rel="apple-touch-icon"
+<link href="../img/iconos/apple-touch-icon-180x180.png" rel="apple-touch-icon"
 	sizes="180x180" />
-<link href="icon-hires.png" rel="icon" sizes="192x192" />
-<link href="icon-normal.png" rel="icon" sizes="128x128" />
-<script src="jquery/jquery-3.1.1.min.js"></script>
+<link href="../img/iconos/icon-hires.png" rel="icon" sizes="192x192" />
+<link href="../img/iconos/icon-normal.png" rel="icon" sizes="128x128" />
+<script src="../jquery/jquery-3.1.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.min.js"
 	type="text/javascript"></script>
 
@@ -122,7 +122,7 @@ include_once ("../clases/Textos.php");
 					</div>
 
 					<div class="form-group">
-						<label>Añade una imagen</label> <input type="file" name="img" /><input
+						<label>Añade imagen</label> <input type="file" name="img" /><input
 							type="hidden" name="lim_tamano" value="1000000" />
 					</div>
 
