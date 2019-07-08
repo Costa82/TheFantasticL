@@ -17,7 +17,7 @@ echo "<ul id='lista_principal_index'>
         <li id='menu_moviles'><i class='fa fa-bars' aria-hidden='true'></i></a>
             <ul id='lista_movil'>
                 <li id='sobreNosotros2'><a href='sobre-nosotros/' title='Sobre nosotros'>Sobre nosotros</a></li>
-                <li id='consultoria2'><a href='consultoria/' title='Consultor�a'>Consultor�a</a>        
+                <li id='consultoria2'><a href='consultoria/' title='Consultoría'>Consultoría</a>        
                     <ul id='menu_consultoria2'>
                         <li id='enEmpresa'><a href='consultoria/' title='En Empresa'>En Empresa</a></li>
                         <li id='workshops'><a href='consultoria/' title='Workshops'>Workshops</a></li>
