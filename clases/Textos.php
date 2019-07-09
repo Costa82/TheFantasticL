@@ -93,7 +93,7 @@ class Textos
      */
     public function mostrarTexto($cod_tipo_texto)
     {
-        $sql = "SELECT t.*, ti.* FROM " . $this->tabla . " t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'";
+        $sql = "SELECT t.*, ti.* FROM " . $this->tabla . " t, " . $this->tabla_ingles . " ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'";
         
         if ($this->c->real_query($sql)) {
             if ($resul = $this->c->store_result()) {
@@ -258,6 +258,45 @@ class Textos
             return false;
         }
     }
+    
+    /**
+     * Borramos el texto con el id pasado como parámetro
+     * 
+     * @param $id_texto
+     * @return 
+     */
+    public function borrarTexto($id_texto)
+    {
+        $sql_query = "DELETE * FROM " . $this->tabla . " WHERE id_texto = ?";
+        $stmt = $this->c->stmt_init();
+        $stmt->prepare($sql_query);
+        if ($stmt === false) {
+            return false;
+        }
+        $stmt->bind_param('i', $id_texto);
+        $stmt->execute();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * modificarLibro($id_libro,$titulo,$isbn,$autor,$sinopsis,$genero,$genero2,$resumen,$serie,$pelicula,$banner)
