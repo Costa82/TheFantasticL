@@ -1,9 +1,3 @@
-<!--
-- Clase Connection.
-- Configuración de la conexión a BBDD
-- @author Miguel Costa.
--->
-
 <?php
 
 class Connection
@@ -38,7 +32,7 @@ class Connection
         @$this->conex = new mysqli($this->host, $this->username, $this->password, $this->base);
         @$this->conex->set_charset('utf8');
         if (mysqli_connect_error()) {
-            trigger_error("Fallo en la conexión, error: " . mysqli_connect_error(), E_USER_ERROR);
+            trigger_error("Fallo en la conexiï¿½n, error: " . mysqli_connect_error(), E_USER_ERROR);
         }
     }
 

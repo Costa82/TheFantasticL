@@ -8,11 +8,14 @@ class Textos
 
     private $tabla;
 
+    private $tabla_ingles;
+
     public function __construct()
     {
         $bd = Connection::dameInstancia();
         $this->c = $bd->dameConexion();
         $this->tabla = "textos";
+        $this->tabla_ingles = "textos_ingles";
     }
 
     /**
@@ -54,7 +57,7 @@ class Textos
         
         return utf8_encode($cadena);
     }
-    
+
     /**
      * Función que comprueba si ya existe el titulo del texto.
      *
@@ -68,7 +71,7 @@ class Textos
         $tituloMinuscula = strtoupper($titulo);
         
         // $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo . "' AND UPPER(autor) ='" . $autor . "'";
-        $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo ."'";
+        $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo . "'";
         if ($this->c->real_query($sql)) {
             if ($resul = $this->c->store_result()) {
                 if ($resul->num_rows == 0) {
@@ -92,9 +95,9 @@ class Textos
     {
         $sql = "SELECT t.*, ti.* FROM " . $this->tabla . " t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'";
         
-        if ($this->c->real_query($sql)) {            
-            if ($resul = $this->c->store_result()) {                
-                if ($resul->num_rows > 0) {                    
+        if ($this->c->real_query($sql)) {
+            if ($resul = $this->c->store_result()) {
+                if ($resul->num_rows > 0) {
                     while ($mostrar = $resul->fetch_assoc()) {
                         
                         echo "<div class='presentacion espanol'>
@@ -139,7 +142,7 @@ class Textos
     public function addTexto($titulo, $titulo_ingles, $tipo, $texto, $texto_ingles, $img, $fecha)
     {
         $foto = NULL;
-        if (!is_null($img)) {
+        if (! is_null($img)) {
             $foto = $this->guardarImgTexto($titulo, $img);
         }
         
@@ -150,14 +153,111 @@ class Textos
         $sen = $this->c->prepare($sql);
         $sen->bind_param("ssssss", $tituloSinCaracteres, $fecha, $texto, $foto, $tipo, $estado);
         
-        if ($sen->execute()) {            
-            return - 401; // Texto subido correctamente
+        if ($sen->execute()) {
             
+            $id_texto = $this->get_id($titulo);
+            
+            if ($this->addTextoIngles($id_texto, $titulo_ingles, $texto_ingles) && $id_texto != 0) {
+                return - 401; // Texto subido correctamente
+            } else {
+                $this->borrarTexto($id_texto);
+                return - 402; // Texto no subido
+            }
         } else {
             return - 402; // Texto no subido
         }
     }
-    
+
+    /**
+     * guardarImgTexto($titulo,$archivo_img):
+     * Función utilizada dentro de la función addTexto,para guardar la imagen del texto si la tuviera.
+     *
+     * @param
+     *            $titulo
+     * @param
+     *            $archivo_img
+     */
+    public function guardarImgTexto($titulo, $archivo_img)
+    {
+        $titulo = $this->quitarCaracteres($titulo);
+        $img_name = $archivo_img['name'];
+        $img_type = $archivo_img['type'];
+        $img_tmp_name = $archivo_img['tmp_name'];
+        $img_size = $archivo_img['size'];
+        
+        if ($img_type == "image/jpeg" || $img_type == "image/pjpeg" || $img_type == "image/jpg") {
+            $extension = "jpg";
+        } elseif ($img_type == "image/png") {
+            $extension = "png";
+        } else {
+            $extension = NULL;
+        }
+        
+        $ruta = NULL;
+        $rutaBD = NULL;
+        $lugar = '../img/textos/';
+        
+        // Validamos la imagen
+        if ($img_name != NULL and $extension != NULL and $img_size != 0) {
+            
+            if ($img_size <= $_REQUEST['lim_tamano']) {
+                
+                $nombre_img = $this->normaliza($titulo . "." . $extension);
+                $ruta = $lugar . $nombre_img;
+                // Guardamos la foto en la carpeta del proyecto "img/textos"
+                move_uploaded_file($img_tmp_name, $ruta);
+                // Declaramos la ruta de la imagen en la base de datos
+                $rutaBD = $nombre_img;
+            }
+        }
+        
+        return $rutaBD;
+    }
+
+    /**
+     * Función que devuelve el id de un texto a partir de su titulo.
+     *
+     * @param
+     *            $titulo
+     * @return mixed
+     */
+    public function get_id($titulo)
+    {
+        $sql = "SELECT id_texto FROM " . $this->tabla . " WHERE titulo='" . $titulo . "'";
+        if ($this->c->real_query($sql)) {
+            if ($resul = $this->c->store_result()) {
+                $mostrar = $resul->fetch_assoc();
+                return $mostrar["id_texto"];
+            }
+        } else {
+            echo $this->c->errno . " -> " . $this->c->error;
+            return 0;
+        }
+    }
+
+    /**
+     * Añade el texto en inglés devolverá true si se ha registrado y false si ha dado error
+     *
+     * @param
+     *            $id_texto
+     * @param
+     *            $titulo_ingles
+     * @param
+     *            $texto_ingles
+     * @return boolean
+     */
+    public function addTextoIngles($id_texto, $titulo_ingles, $texto_ingles)
+    {
+        $sql = "INSERT INTO " . $this->tabla_ingles . " (id_texto, titulo_ingles, texto_ingles) VALUES(?,?,?)";
+        $sen = $this->c->prepare($sql);
+        $sen->bind_param("iss", $id_texto, $titulo_ingles, $texto_ingles);
+        
+        if ($sen->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * modificarLibro($id_libro,$titulo,$isbn,$autor,$sinopsis,$genero,$genero2,$resumen,$serie,$pelicula,$banner)
@@ -289,52 +389,6 @@ class Textos
             copy($rutaOrigen, $rutaFinal);
             $rutaBD = $this->normaliza($titulo . ".png");
         }
-        return $rutaBD;
-    }
-
-    /**
-     * guardarImgTexto($titulo,$archivo_img):
-     * Función utilizada dentro de la función addTexto,para guardar la imagen del texto si la tuviera.
-     *
-     * @param
-     *            $titulo
-     * @param
-     *            $archivo_img
-     */
-    public function guardarImgTexto($titulo, $archivo_img)
-    {
-        $titulo = $this->quitarCaracteres($titulo);
-        $img_name = $archivo_img['name'];
-        $img_type = $archivo_img['type'];
-        $img_tmp_name = $archivo_img['tmp_name'];
-        $img_size = $archivo_img['size'];
-        
-        if ($img_type == "image/jpeg" || $img_type == "image/pjpeg" || $img_type == "image/jpg") {
-            $extension = "jpg";
-        } elseif ($img_type == "image/png") {
-            $extension = "png";
-        } else {
-            $extension = NULL;
-        }
-        
-        $ruta = NULL;
-        $rutaBD = NULL;
-        $lugar = '../img/textos/';
-        
-        // Validamos la imagen
-        if ($img_name != NULL and $extension != NULL and $img_size != 0) {
-            
-            if ($img_size <= 1000000) {
-                
-                $nombre_img = $this->normaliza($titulo . "." . $extension);
-                $ruta = $lugar . $nombre_img;
-                // Guardamos la foto en la carpeta del proyecto "img/textos"
-                move_uploaded_file($img_tmp_name, $ruta);
-                // Declaramos la ruta de la imagen en la base de datos
-                $rutaBD = $nombre_img;
-            }
-        }
-        
         return $rutaBD;
     }
 
@@ -722,27 +776,6 @@ class Textos
             if ($resul = $this->c->store_result()) {
                 $mostrar = $resul->fetch_assoc();
                 return $mostrar["img_portada"];
-            }
-        } else {
-            echo $this->c->errno . " -> " . $this->c->error;
-        }
-    }
-
-    /**
-     * get_id($titulo)
-     * Función que devuelve el id de un libro a partir de su titulo.
-     *
-     * @param
-     *            $titulo
-     * @return $mostrar["id"] el del libro
-     */
-    public function get_id($titulo)
-    {
-        $sql = "SELECT id_libro FROM " . $this->tabla . " WHERE titulo='" . $titulo . "'";
-        if ($this->c->real_query($sql)) {
-            if ($resul = $this->c->store_result()) {
-                $mostrar = $resul->fetch_assoc();
-                return $mostrar["id_libro"];
             }
         } else {
             echo $this->c->errno . " -> " . $this->c->error;
