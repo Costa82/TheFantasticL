@@ -1,4 +1,4 @@
-<?php
+ç<?php
 // Menu principal para la pagina principal index.php
 echo "<ul id='lista_principal_index'>
         <li id='inicio'><a href='inicio' title='Inicio'><img src='img/logos/TheFantasticL.png' alt='The Fantastic L'/></a></li>

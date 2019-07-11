@@ -26,6 +26,8 @@
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="../jquery/zoom_fancybox.js"></script>
+<script src="../jquery/jquery_banderas.js"></script>
+<script src="../jquery/jquery_menuMoviles_desplegable.js"></script>
 
 <!-- Add jQuery library -->
 <script type="text/javascript"
@@ -54,26 +56,26 @@
 	type="text/css" media="screen" />
 <script type="text/javascript"
 	src="../fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-	
-<!-- Metemos un aleatorio para la recarga autom·tica del css y el js -->
+
+<!-- Metemos un aleatorio para la recarga automÔøΩtica del css y el js -->
 <script>
 
     var rutacss1 = "../css/main.css?" + Math.random();
-    var rutacss2 = "../jquery/jquery_menuMoviles_desplegable.js?" + Math.random();
-    var rutacss3 = "../jquery/jquery_leerMas.js?" + Math.random();
+    var rutajs2 = "../jquery/jquery_menuMoviles_desplegable.js?" + Math.random();
+    var rutajs3 = "../jquery/jquery_leerMas.js?" + Math.random();
     var script = "script";
     
     document.write('<link rel="stylesheet" href="' + rutacss1 + '" type="text/css" media="screen" />');
-    document.write('<script src="' + rutacss2 + '"></' + script + '>');
-    document.write('<script src="' + rutacss3 + '"></' + script + '>');
+    document.write('<script src="' + rutajs2 + '"></' + script + '>');
+    document.write('<script src="' + rutajs3 + '"></' + script + '>');
 	
 </script>
 
 </head>
 <body>
 	<header>
-
 		<nav>
+			<!-- Men√∫ de navegaci√≥n -->
           <?php include_once("menuNav.php");?>		
       	</nav>
 	</header>
@@ -82,8 +84,6 @@
 
 		<h3>BLOG THE FANTASTIC L</h3>
 
-		</br>
-
 	</div>
 
 	<!-- ARTÕçCULO -->
@@ -91,16 +91,13 @@
 
 		<!-- PARTE PRINCIPAL DEL ARTÕçCULO CON IMAGEN GRANDE Y TEXTO -->
 
-		<h3 class="titulo_articulo">NOMBRE DEL ARTÕCULO</h3>
+		<h3 class="titulo_articulo">NOMBRE DEL ART√≠CULO</h3>
 
 		<div class="fechaArticulo">
 			<p>19 de enero de 2019</p>
 		</div>
 
-		<img src=''
-			title=''
-			alt=''
-			class='' />
+		<img src='' title='' alt='' class='' />
 
 		<div class="explicacion_articulo">
 
@@ -109,24 +106,19 @@
 			<span class="leerMas"><strong>leer m√°s...</strong></span>
 
 
-			<!-- Esta parte del texto estar· oculta hasta hacer click en 'leer m·s...' -->
+			<!-- Esta parte del texto estarÔøΩ oculta hasta hacer click en 'leer mÔøΩs...' -->
 
 			<div class="texto_leerMas">
-			
-				</br>
-				<p>!</p>
+
+				<p></p>
 
 				<div class="contenedor_articulo_secundario">
 
 					<div class="articulo_secundario">
 
 						<!-- img con zoom -->
-						<a class="fancybox" rel="group"
-							href=""><img
-							src=""
-							class="a"
-							title=''
-							alt="" /></a>
+						<a class="fancybox" rel="group" href=""><img src="" class="a"
+							title='' alt="" /></a>
 
 					</div>
 
@@ -135,7 +127,6 @@
 				<div class="explicacion_final">
 
 					<p></p>
-					</br>
 					<p>
 						<i>Pie de foto</i>
 					</p>
@@ -144,7 +135,7 @@
 
 			</div>
 
-			<!-- enlace de 'leer menos...' para ocultar el texto y las im·genes -->
+			<!-- enlace de 'leer menos...' para ocultar el texto y las imÔøΩgenes -->
 			<span class="leerMenos"><strong>leer menos...</strong></span>
 
 		</div>
