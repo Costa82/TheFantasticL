@@ -104,11 +104,19 @@ class Textos
 									<h1> " . $mostrar["titulo"] . "</h1>
 									<p> " . $mostrar["texto"] . "</p>";
                         
+                        if ($mostrar["imagen"] != null) {
+                            echo "<img src='./img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+                        }
+                                    
                         echo "</div>";
                         
                         echo "<div class='presentacion ingles'>
 									<h1> " . $mostrar["titulo_ingles"] . "</h1>
 									<p> " . $mostrar["texto_ingles"] . "</p>";
+                        
+                        if ($mostrar["imagen"] != null) {
+                            echo "<img src='./img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+                        }
                         
                         echo "</div>";
                     }
@@ -258,12 +266,13 @@ class Textos
             return false;
         }
     }
-    
+
     /**
      * Borramos el texto con el id pasado como parámetro
-     * 
-     * @param $id_texto
-     * @return 
+     *
+     * @param
+     *            $id_texto
+     * @return
      */
     public function borrarTexto($id_texto)
     {
@@ -276,27 +285,6 @@ class Textos
         $stmt->bind_param('i', $id_texto);
         $stmt->execute();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     /**
      * modificarLibro($id_libro,$titulo,$isbn,$autor,$sinopsis,$genero,$genero2,$resumen,$serie,$pelicula,$banner)
