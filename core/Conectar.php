@@ -1,53 +1,43 @@
 <?php
 
-class Connection
+class Conectar
 {
 
-    // private $host = "bbdd.devoralibros.es";
-    // private $username = "ddb95409";
-    // private $password = "MiguelCosta82";
-    // private $base = "ddb95409";
-    private $host = "localhost";
+    private $driver;
 
-    private $username = "root";
+    private $host, $user, $pass, $database, $charset;
 
-    private $password = "";
-
-    private $base = "bd_TheFantasticL";
-
-    private $conex;
-
-    private static $instancia;
-
-    public static function dameInstancia()
+    public function __construct()
     {
-        if (! self::$instancia) {
-            self::$instancia = new self();
+        $db_cfg = require_once 'config/database.php';
+        $this->driver = $db_cfg["driver"];
+        $this->host = $db_cfg["host"];
+        $this->user = $db_cfg["user"];
+        $this->pass = $db_cfg["pass"];
+        $this->database = $db_cfg["database"];
+        $this->charset = $db_cfg["charset"];
+    }
+
+    public function conexion()
+    {
+        if ($this->driver == "mysql" || $this->driver == null) {
+            $con = new mysqli($this->host, $this->user, $this->pass, $this->database);
+            $con->query("SET NAMES '" . $this->charset . "'");
         }
-        return self::$instancia;
+        
+        return $con;
     }
 
-    private function __construct()
-    {
-        @$this->conex = new mysqli($this->host, $this->username, $this->password, $this->base);
-        @$this->conex->set_charset('utf8');
-        if (mysqli_connect_error()) {
-            trigger_error("Fallo en la conexi�n, error: " . mysqli_connect_error(), E_USER_ERROR);
-        }
-    }
-
-    private function __clone()
-    {}
-
-    public function dameConexion()
-    {
-        return $this->conex;
-    }
-
-    public function cierraConexion()
-    {
-        $this->conex->close();
-    }
+//     public function startFluent()
+//     {
+//         require_once "FluentPDO/FluentPDO.php";
+        
+//         if ($this->driver == "mysql" || $this->driver == null) {
+//             $pdo = new PDO($this->driver . ":dbname=" . $this->database, $this->user, $this->pass);
+//             $fpdo = new FluentPDO($pdo);
+//         }
+        
+//         return $fpdo;
+//     }
 }
-
 ?>

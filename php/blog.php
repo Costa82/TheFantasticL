@@ -4,7 +4,7 @@
 -->
 
 <?php
-include_once ("../clases/Textos.php");
+include_once ("../model/Textos.php");
 ?>
 
 <!DOCTYPE html>

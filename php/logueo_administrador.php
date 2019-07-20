@@ -1,12 +1,12 @@
 <!--
-- Formulario de inicio de sesiÛn para el administrador.
+- Formulario de inicio de sesiÔøΩn para el administrador.
 - @author Miguel Costa.
 -
 -->
 
 <?php
-require_once '../inc/defines.inc.php';
-require_once '../inc/validaciones.inc.php';
+require_once '../config/defines.php';
+require_once '../config/validaciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ require_once '../inc/validaciones.inc.php';
 							name="contrasena" placeholder=Contrase√±a... required="required" />
 					</div>
 					<h3>
-						<a href="../FormularioEnvioContraseÒa/">He olvidado la contrase√±a
+						<a href="../FormularioEnvioContraseÔøΩa/">He olvidado la contrase√±a
 							y/o el Nick...</a>
 					</h3>
 					<div class="botones">

@@ -14,7 +14,7 @@ spl_autoload_register(function ($nombre_clase) {
                 
                 if ($usuario->esRegistrado($nick, $pass)) { // para loguearse, se comprueba que sea ususario registrado
                     
-                    require_once '../inc/funciones.php';
+                    require_once '../config/funciones.php';
                     
                     $destino = "../pagina-administrador/";
                     

@@ -1,15 +1,15 @@
 <?php
-require_once 'defines.inc.php';
+require_once 'defines.php';
 
 /**
- * La contrase�a debe tener al entre 4 y 8 caracteres, al menos un d�gito, al menos una min�scula y al menos una may�scula.
+ * La esContrasena debe tener al entre 4 y 8 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
  * No puede tener otros s�mbolos.
  *
  * @param
  *            $pass
  * @return true si cumple con los requisitos
  */
-function esContrase�a($pass)
+function esContrasena($pass)
 {
     /* ("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{4,8}$/",$pass) */
     if (preg_match("/^\S{4,16}$/", $pass)) {
@@ -20,7 +20,7 @@ function esContrase�a($pass)
 }
 
 /**
- * Funci�n que valida que el tel�fono no sea raro
+ * Función que valida que el teléfono no sea raro
  *
  * @param
  *            $value
@@ -38,8 +38,8 @@ function validarTelefono($value)
 }
 
 /**
- * Funci�n que compara la dos contraseñas que introduce el usuario por el formulario cuando tiene la opci�n de
- * modificar la contrase�a
+ * Función que compara la dos contraseñas que introduce el usuario por el formulario cuando tiene la opción de
+ * modificar la contrasena
  *
  * @param
  *            $passNueva
@@ -241,24 +241,6 @@ function tieneCaracteresEspeciales($palabra)
         return false;
     }
     return false;
-}
-
-/**
- * esCodigoCorrecto($codigo)
- * Comprueba que el codigo introducido es el correcto
- *
- * @param
- *            $palabra
- * @return boolean true si se cumplen las reglas. False en caso contrario
- */
-function esCodigoCorrecto($codigo)
-{
-    $codigoCorrecto = "FERIADELLIBRO";
-    if ($codigoCorrecto == $codigo) {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 /**

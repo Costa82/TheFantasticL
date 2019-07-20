@@ -1,6 +1,6 @@
 <?php
 
-require_once '../clases/Correo.php';
+require_once '../model/Correo.php';
 require_once '../inc/defines.inc.php';
 require_once '../inc/validaciones.inc.php';
 
