@@ -1,6 +1,8 @@
 <?php
 
-$textos = new Textos();
+require_once './controller/TextosController.php';
+
+$controller = new TextosController();
 
 echo "
 
@@ -8,8 +10,8 @@ echo "
     <img src='img/logos/TheFantasticL_texto.png' alt='The Fantastic L'/>
 </div> ";
 
-// Buscamos los textos de presentación pasando el valor 'PRES'
+// Buscamos los textos de presentaciï¿½n pasando el valor 'PRES'
 $cod_tipo_texto = 'PRES';
 
-$textos->mostrarTexto($cod_tipo_texto);
+$controller->mostrarTexto($cod_tipo_texto);
 

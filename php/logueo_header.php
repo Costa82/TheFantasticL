@@ -1,7 +1,5 @@
 <?php
-spl_autoload_register(function ($nombre_clase) {
-    include_once ('../clases/' . $nombre_clase . '.php');
-});
+include_once ('../model/Usuario.php');
     
     if (isset($_REQUEST['loguear'])) {
         

@@ -189,14 +189,14 @@ function validacionErrores($num)
 }
 
 /**
- * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras � n�meros
+ * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras ó números
  *
  * @param
  *            $nick
  */
 function esNick($nick)
 {
-    if (preg_match("/^[A-Z \-������������0-9.]{4,8}$/i", $nick)) {
+    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ0-9.]{4,8}$/i", $nick)) {
         return true;
     } else {
         return false;
@@ -204,8 +204,8 @@ function esNick($nick)
 }
 
 /**
- * Un nombre � apellido es v�lido si tiene un m�mimo de 3 caracteres y un m�ximo de 20
- * Adem�s, que no empiece por n�meros,puede contener espacios en blanco y que no contenga caracteres especiales
+ * Un nombre ó apellido es válido si tiene un mímimo de 3 caracteres y un máximo de 20
+ * Además, que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales
  *
  * @param
  *            $nombre
@@ -214,10 +214,10 @@ function esNick($nick)
 function esNombreValido($nombre)
 {
     /**
-     * Que no empiece por n�meros,puede contener espacios en blanco y que no contenga caracteres especiales,
-     * un m�mimo de 3 caracteres y un m�ximo de 20
+     * Que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales,
+     * un mímimo de 3 caracteres y un máximo de 20
      */
-    if (preg_match("/^[A-Z \-������������\\s]{3,20}/i", $nombre)) {
+    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ\\s]{3,20}/i", $nombre)) {
         return true;
     } else {
         
@@ -244,11 +244,29 @@ function tieneCaracteresEspeciales($palabra)
 }
 
 /**
- * Funcion a la que se le pasa un nombre simple � compuesto y transforma la primera letra a May�sculas
+ * esCodigoCorrecto($codigo)
+ * Comprueba que el codigo introducido es el correcto
+ *
+ * @param
+ *            $palabra
+ * @return boolean true si se cumplen las reglas. False en caso contrario
+ */
+function esCodigoCorrecto($codigo)
+{
+    $codigoCorrecto = "FERIADELLIBRO";
+    if ($codigoCorrecto == $codigo) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Funcion a la que se le pasa un nombre simple ó compuesto y transforma la primera letra a Mayúsculas
  *
  * @param
  *            $nombre
- * @return string devuleve el nombre con la primera letra en may�sculas
+ * @return string devuleve el nombre con la primera letra en mayúsculas
  */
 function ponerLetraEnMayuscula($nombre)
 {
@@ -278,4 +296,3 @@ function esMailValido($mail)
         return true;
     return false;
 }
-?>	

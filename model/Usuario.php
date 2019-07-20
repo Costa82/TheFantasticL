@@ -1,12 +1,8 @@
 <?php
-require_once './core/EntidadBase.php';
+require_once '../core/EntidadBase.php';
 
 class Usuario extends EntidadBase
 {
-
-    private $c;
-
-    private $tabla;
 
     private $contrasena;
 
@@ -14,32 +10,8 @@ class Usuario extends EntidadBase
 
     public function __construct()
     {
-        $bd = Conectar::dameInstancia();
-        $this->c = $bd->dameConexion();
-        $this->tabla = "usuarios";
-        // $this->contrasena = "Misery16!";
-        // $this->correoAdministrador = "administrador@devoralibros.es";
-    }
-
-    /**
-     * normaliza
-     * Función que se utilizara dentro de las funcione modificaImg() para quitar los acentos y las Ñs a las rutas.
-     *
-     * @param
-     *            $cadenaOriginal
-     * @return String
-     */
-    public function normaliza($cadenaOriginal)
-    {
-        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
-		ßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
-        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuy
-		bsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
-        $cadena = utf8_decode($cadenaOriginal);
-        $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
-        $cadena = strtolower($cadena);
-        
-        return utf8_encode($cadena);
+        $tabla = "usuarios";
+        parent::__construct($tabla);
     }
 
     /**
@@ -1939,18 +1911,6 @@ class Usuario extends EntidadBase
         }
     }
 
-    /**
-     * console_log
-     * Sacamos por consola lo que le pasemos
-     *
-     * @param
-     *            $data
-     */
-    function console_log($data)
-    {
-        echo '<script>';
-        echo 'console.log(' . json_encode($data) . ')';
-        echo '</script>';
-    }
+
 }
 ?>

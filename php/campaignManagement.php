@@ -3,10 +3,6 @@
 - @author Miguel Costa.
 -->
 
-<?php
-include_once ("../model/Textos.php");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
