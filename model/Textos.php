@@ -55,7 +55,7 @@ class Textos extends EntidadBase
 									<p> " . $mostrar["texto"] . "</p>";
             
             if ($mostrar["imagen"] != null) {
-                echo "<img src='./img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
             }
             
             echo "</div>";
@@ -65,7 +65,7 @@ class Textos extends EntidadBase
 									<p> " . $mostrar["texto_ingles"] . "</p>";
             
             if ($mostrar["imagen"] != null) {
-                echo "<img src='./img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
             }
             
             echo "</div>";

@@ -1,8 +1,8 @@
 <?php
 
-require_once '../model/Correo.php';
-require_once '../inc/defines.inc.php';
-require_once '../inc/validaciones.inc.php';
+require_once './model/Correo.php';
+require_once 'defines.php';
+require_once 'validaciones.php';
 
 $correo = new Correo();
 
@@ -55,14 +55,14 @@ if(isset($_REQUEST['enviar'])){
         
         // Comprobamos cómo ha ido el envío
         if ( $envio == "OK" ) {
-            $destino="../envio-correcto/";
+            $destino="envio-correcto";
         } else {
-            $destino="../envio-fallido/";
+            $destino="envio-fallido";
         }
         
         // El nombre y el mail tienen que ser obligatorios
     } else {
-        $destino="../envio-fallido/";
+        $destino="envio-fallido";
     }
     
     if (!headers_sent()) {

@@ -1,12 +1,12 @@
 <?php
-include_once ('../model/Usuario.php');
+include_once ('../model/Usuarios.php');
     
     if (isset($_REQUEST['loguear'])) {
         
         if (! empty($_REQUEST['nick']) and ! empty($_REQUEST['contrasena'])) {
             $nick = trim($_REQUEST['nick']);
             $pass = trim($_REQUEST['contrasena']);
-            $usuario = new Usuario();
+            $usuario = new Usuarios();
             
             if ($usuario->esRegistradoNick($nick)) {
                 

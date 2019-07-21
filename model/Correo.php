@@ -1,5 +1,5 @@
 <?php
-include ("../php/phpmailer.php");
+include ("./config/phpmailer.php");
 
 class Correo
 {
