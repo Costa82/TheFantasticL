@@ -14,23 +14,12 @@
 		<ul>
             
             <?php
-            if (strpos($_SERVER['REQUEST_URI'], "blog") !== false || strpos($_SERVER['REQUEST_URI'], "nosotros") !== false || strpos($_SERVER['REQUEST_URI'], "consultoria") !== false || strpos($_SERVER['REQUEST_URI'], "contacto") !== false || strpos($_SERVER['REQUEST_URI'], "legal") !== false || strpos($_SERVER['REQUEST_URI'], "cookies") !== false || strpos($_SERVER['REQUEST_URI'], "management") !== false) {
-                
-                // Estamos en alguna pagina que no sea la principal (Galeria, eventos, reservas, etc...)
-                echo '<li id="sobreNosotros"><a href="../sobre-nosotros/" title="Sobre nosotros">Sobre nosotros</a></li>
-                    <li id="consultoria"><a href="../consultoria/" title="Consultoría">Consultoría</a></li>
-                    <li id="campaignManagement"><a href="../campaign-management/" title="Campaign Management">Campaign Management</a></li>
-                    <li id="contacto"><a href="../contacto/" title="Contacto">Contacto</a></li>
-                    <li id="blog"><a href="../blog/" title="Blog The Fantastic L">Blog</a></li>';
-            } else {
-                
-                // Estamos en la pagina principal (index)
-                echo '<li id="sobreNosotros"><a href="sobre-nosotros/" title="Sobre nosotros">Sobre nosotros</a></li>
-                    <li id="consultoria"><a href="consultoria/" title="Consultoría">Consultoría</a></li>
-                    <li id="campaignManagement"><a href="campaign-management/" title="Campaign Management">Campaign Management</a></li>
-                    <li id="contacto"><a href="contacto/" title="Contacto">Contacto</a></li>
-                    <li id="blog"><a href="blog/" title="Blog">Blog</a></li>';
-            }
+            echo '
+               <!-- li id="sobreNosotros"><a href="sobre-nosotros" title="Sobre nosotros">Sobre nosotros</a></li -->
+               <li id="consultoria"><a href="consultoria" title="Consultoría">Consultoría</a></li>
+               <li id="campaignManagement"><a href="campaign-management" title="Campaign Management">Campaign Management</a></li>
+               <li id="blog"><a href="blog" title="Blog">Blog</a></li>
+               <li id="contacto"><a href="contacto" title="Contacto">Contacto</a></li>';
             ?>
             
             </ul>

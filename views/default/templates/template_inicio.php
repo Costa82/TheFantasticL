@@ -59,7 +59,7 @@
 	<header> 
 		<nav> 
 		    <!-- Menú de navegación -->
-        	<?php include_once("template_menuNavIndex.php");?>		
+        	<?php include_once("template_menuNav.php");?>		
       	</nav> 
     </header>
 
