@@ -1,81 +1,129 @@
-<!--
-- Archivo index principal.
-- @author Miguel Costa.
--->
-
 <?php
-include_once ("clases/Textos.php");
-?>
+session_start();
+require_once 'core/Conectar.php';
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="es-Es" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
-<meta name="robots" content="NOODP" />
-<title>The Fantastic L</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
+// Incluimos automáticamente el model que sea necesario
+function __autoload($class)
+{
+    require_once ("model/$class.php");
+}
 
-<script>
-     var rutacss1 = "css/main.css?" + Math.random();
-     document.write('<link rel="stylesheet" href="' + rutacss1 + '" type="text/css" media="screen" />'); 
-</script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-122491095-1">
-</script>
-
-<script>
-  	window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+// Comprobamos la sesión
+if (! isset($_SESSION['usuario'])) {
     
-    gtag('config', 'UA-122491095-1');
-</script>
+    // Compruebo si existe la cookie y si coincide con algún usuario
+    if (isset($_COOKIE['usuario'])) {
+        
+        require_once 'model/Usuarios.php';
+        $usuario = new Usuarios();
+        $nombre_usuario = $usuario->comprobar_cookie($_COOKIE['usuario']);
+        
+        if ($nombre_usuario) {
+            
+            // Creamos la variable de sesión
+            $_SESSION['usuario'] = $nombre_usuario;
+            // Si estamos en inicio redirigimos a ver contactos
+            if ($_GET['action'] == 'inicio') {
+                header('location:inicio');
+            }
+        } else {
+            header('location:inicio');
+        }
+    }
+}
 
-<link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One'
-	rel='stylesheet' type='text/css' />
-<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah"
-	rel="stylesheet" />
-<link href="apple-touch-icon.png" rel="apple-touch-icon" />
-<link href="apple-touch-icon-152x152.png" rel="apple-touch-icon"
-	sizes="152x152" />
-<link href="apple-touch-icon-167x167.png" rel="apple-touch-icon"
-	sizes="167x167" />
-<link href="apple-touch-icon-180x180.png" rel="apple-touch-icon"
-	sizes="180x180" />
-<link href="icon-hires.png" rel="icon" sizes="192x192" />
-<link href="icon-normal.png" rel="icon" sizes="128x128" />
-<script src="jquery/jquery-3.1.1.min.js"></script>
-<script src="https://code.jquery.com/jquery-latest.min.js"
-	type="text/javascript"></script>
-<script src="jquery/cookies.js" type="text/javascript"></script>
-<script src="jquery/jquery_menuMoviles_desplegable.js"></script>
-<script src="jquery/jquery_banderas.js"></script>
+// Enrutamiento. Selecciona el controlador y la acción a ejecutar
+$map = array(
+    'inicio' => array(
+        'controller' => 'ControladorUsuarios',
+        'action' => 'inicio',
+        'privada' => false
+    ),
+    'blog' => array(
+        'controller' => 'ControladorTextos',
+        'action' => 'blog',
+        'privada' => false
+    ),
+    'consultoria' => array(
+        'controller' => 'ControladorTextos',
+        'action' => 'consultoria',
+        'privada' => false
+    ),
+    'campaign' => array(
+        'controller' => 'ControladorTextos',
+        'action' => 'campaign',
+        'privada' => false
+    ),
+    'contacto' => array(
+        'controller' => 'ControladorTextos',
+        'action' => 'contacto',
+        'privada' => false
+    ),
+    'envio_mensaje' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'envio_mensajes',
+        'privada' => false
+    ),
+    'envio_correcto' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'envio_correcto',
+        'privada' => false
+    ),
+    'envio_fallido' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'envio_fallido',
+        'privada' => false
+    ),
+    'ver_mensaje_privado' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'ver_mensaje_privado',
+        'privada' => true
+    ),
+    'ver_todos_mensajes_privados' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'ver_todos_mensajes_privados',
+        'privada' => true
+    ),
+    'borrar_mensaje' => array(
+        'controller' => 'ControladorMensajes',
+        'action' => 'borrar_mensaje',
+        'privada' => true
+    )
+);
 
-</head>
-<body>
+// Parseo de la ruta
+// Comprobamos si hay alguna acción que ejecutar, sino ejecutamos inicio
+if (isset($_GET['action'])) {
+    
+    // Comprobamos que la acción existe en el mapa del enrutamiento, sino mostramos error 404
+    if (isset($map[$_GET['action']])) {
+        $action = $_GET['action'];
+    } else {
+        header('Status: 404 Not Found');
+        echo '<html><body><h1>Error 404: No existe la ruta ' . $_GET['action'] . ' </h1></body></html>';
+        exit();
+    }
+} else {
+    $action = 'inicio';
+}
 
-	<header> 
-		<nav> 
-		    <!-- Menú de navegación -->
-        	<?php include_once("php/menuNavIndex.php");?>		
-      	</nav> 
-    </header>
+// La variable controlador contiene la clase del controlador a ejecutar y el método de dicha clase.
+$controlador = $map[$action];
 
-	<!-- Contenido de la página principal -->
-    <?php include_once("php/contenido.php");?>		
-	
-	<!-- cookies -->
-	<?php include_once("php/cookies.php")?>
+// Guardamos en variables el nombre de la clase controladora y del método que queremos ejecutar dentro de dicha clase
+$clase_controlador = $controlador['controller'];
+$metodo = $controlador['action'];
 
-	<footer> 
-        <?php include_once("php/footer.php");?>        
-    </footer>
+// // Si la página es privada comprobamos si el usuario está correctamente logueado, sino redirigimos a inicio
+// if ($controlador['privada'] && ! isset($_SESSION['usuario'])) {
+// header('location:/gestionfutbol/inicio'); // Si lo ponemos en el servidor poner /Foro/inicio
+// die();
+// }
 
-</body>
-</html>
+// Creamos un objeto de la clase controladora y ejecutamos el método indicado en el action
+require_once "controller/$clase_controlador.php";
+
+$obj_controlador = new $clase_controlador();
+$obj_controlador->$metodo();
+
+?>

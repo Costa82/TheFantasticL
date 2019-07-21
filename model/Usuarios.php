@@ -1,13 +1,8 @@
 <?php
-require_once 'Connection.php';
+require_once '../core/EntidadBase.php';
 
-// include ("../php/phpmailer.php");
-class Usuario
+class Usuarios extends EntidadBase
 {
-
-    private $c;
-
-    private $tabla;
 
     private $contrasena;
 
@@ -15,32 +10,8 @@ class Usuario
 
     public function __construct()
     {
-        $bd = Connection::dameInstancia();
-        $this->c = $bd->dameConexion();
-        $this->tabla = "usuarios";
-        // $this->contrasena = "Misery16!";
-        // $this->correoAdministrador = "administrador@devoralibros.es";
-    }
-
-    /**
-     * normaliza
-     * Función que se utilizara dentro de las funcione modificaImg() para quitar los acentos y las Ñs a las rutas.
-     *
-     * @param
-     *            $cadenaOriginal
-     * @return String
-     */
-    public function normaliza($cadenaOriginal)
-    {
-        $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
-		ßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
-        $modificadas = 'aaaaaaaceeeeiiiidnoooooouuuuy
-		bsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
-        $cadena = utf8_decode($cadenaOriginal);
-        $cadena = strtr($cadena, utf8_decode($originales), $modificadas);
-        $cadena = strtolower($cadena);
-        
-        return utf8_encode($cadena);
+        $tabla = "usuarios";
+        parent::__construct($tabla);
     }
 
     /**
@@ -85,7 +56,7 @@ class Usuario
      */
     public function mostrarUsuarios($id_usuario, $tipo_usuario)
     {
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $sql = "SELECT nick, id_usuario, mail, puntos, puntosmes foto FROM usuarios WHERE NOT id_usuario=1 AND NOT id_usuario=2 AND NOT id_usuario=4 AND NOT id_usuario=5 AND NOT id_usuario=100 AND Estado = 'ALTA' ORDER BY nick ASC";
         if ($c->real_query($sql)) {
@@ -114,7 +85,7 @@ class Usuario
      */
     public function muestraUsuario($nick)
     {
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $sql = "SELECT * FROM usuarios WHERE nick='$nick' AND Estado='ALTA'";
         if ($c->real_query($sql)) {
@@ -157,7 +128,7 @@ class Usuario
      */
     public function getUsuarioNick($nick)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $datos = array();
         $sql = "SELECT * FROM usuarios WHERE nick=" . $nick;
@@ -189,7 +160,7 @@ class Usuario
      */
     public function getIdusuario($nick)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT id_usuario FROM usuarios WHERE UPPER(nick)=UPPER('$nick')";
         if ($conexion->real_query($sql)) {
@@ -214,7 +185,7 @@ class Usuario
      */
     public function getNick($id)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT nick FROM usuarios WHERE id_usuario='" . $id . "'";
         if ($conexion->real_query($sql)) {
@@ -239,7 +210,7 @@ class Usuario
      */
     public function getNombre($id)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT nombre FROM usuarios WHERE id_usuario='" . $id . "'";
         if ($conexion->real_query($sql)) {
@@ -265,7 +236,7 @@ class Usuario
      */
     public function getTipoUsuario($id)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT tipo_usuario FROM usuarios WHERE id_usuario='" . $id . "'";
         if ($conexion->real_query($sql)) {
@@ -290,7 +261,7 @@ class Usuario
      */
     public function getMail($id)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT mail FROM usuarios WHERE id_usuario='" . $id . "'";
         if ($conexion->real_query($sql)) {
@@ -467,7 +438,7 @@ class Usuario
      */
     public function existeCodigoPatrocinio($codigoPatrocinio)
     {
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $sql = "SELECT nick FROM usuarios WHERE codigoPatrocinio = '$codigoPatrocinio'";
         if ($c->real_query($sql)) {
@@ -533,7 +504,7 @@ class Usuario
      */
     public function sonAmigos($id1, $id2)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT * FROM usuarios_amigos WHERE id_usuario1='$id1' AND id_usuario2='$id2' AND estado=2";
         if ($conexion->real_query($sql)) {
@@ -567,7 +538,7 @@ class Usuario
      */
     public function solicitudEnviada($id1, $id2)
     {
-        $c = Connection::dameInstancia();
+        $c = Conectar::dameInstancia();
         $conexion = $c->dameConexion();
         $sql = "SELECT * FROM usuarios_amigos WHERE estado=1 AND (id_usuario1='$id1' AND id_usuario2='$id2') OR (id_usuario1='$id2' AND id_usuario2='$id1')";
         if ($conexion->real_query($sql)) {
@@ -619,7 +590,7 @@ class Usuario
      */
     public function enviarMensaje($id1, $id2, $mensaje)
     {
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $fecha = date("Y-m-d");
         $sql = "INSERT INTO usuarios_mensajes (id_usuario1, id_usuario2, mensaje, fecha)" . " VALUES(?,?,?,?)";
@@ -644,7 +615,7 @@ class Usuario
     {
         $id1 = 100;
         $id2 = $this->getIdusuario($nick);
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $fecha = date("Y-m-d");
         $mensaje = '¡Hola ' . $nick . '! ¿Por qué no te animas a comentar algún libro de los ya subidos o, mejor aún, a subir alguno que quieras hacer un resumen personal' . ' tú mismo? En esta comunidad podrás dar rienda suelta a tus pensamientos sobre libros. ¡BIENVENIDO!';
@@ -673,7 +644,7 @@ class Usuario
         $nick = $this->getNick($id);
         $id1 = 100;
         $id2 = $this->getIdusuario($nick);
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $fecha = date("Y-m-d");
         $mensaje = '¡Hola ' . $nick . '! Tu libro ' . $titulo . ' ha recibido un comentario.';
@@ -698,7 +669,7 @@ class Usuario
      */
     public function mensajesSinLeer($id)
     {
-        $bd = Connection::dameInstancia();
+        $bd = Conectar::dameInstancia();
         $c = $bd->dameConexion();
         $sql = "SELECT * FROM usuarios_mensajes WHERE id_usuario2='$id' AND leido=1";
         if ($c->real_query($sql)) {
@@ -1941,17 +1912,20 @@ class Usuario
     }
 
     /**
-     * console_log
-     * Sacamos por consola lo que le pasemos
+     * comprobamos si existe algún usuario cuyo nombre de usuario codificado con md5 coincida con la cookie pasada como parámetro
      *
      * @param
-     *            $data
+     *            $valor_cookie
+     * @return Boolean
      */
-    function console_log($data)
+    public function comprobar_cookie($valor_cookie)
     {
-        echo '<script>';
-        echo 'console.log(' . json_encode($data) . ')';
-        echo '</script>';
+        $this->query = "select * from usuarios where md5(email) = '$valor_cookie'";
+        $this->get_results_from_query();
+        if (count($this->rows) == 1)
+            return $this->rows[0]['email'];
+        else
+            return false;
     }
 }
 ?>

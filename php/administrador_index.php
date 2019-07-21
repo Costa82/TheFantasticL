@@ -4,9 +4,9 @@
 -->
 
 <?php
-require_once '../inc/funciones.php';
-require_once '../inc/validaciones.inc.php';
-include_once ("../clases/Textos.php");
+require_once '../config/funciones.php';
+require_once '../config/validaciones.php';
+include_once ("../model/Textos.php");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

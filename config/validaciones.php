@@ -1,15 +1,15 @@
 <?php
-require_once 'defines.inc.php';
+require_once 'defines.php';
 
 /**
- * La contrase�a debe tener al entre 4 y 8 caracteres, al menos un d�gito, al menos una min�scula y al menos una may�scula.
+ * La esContrasena debe tener al entre 4 y 8 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
  * No puede tener otros s�mbolos.
  *
  * @param
  *            $pass
  * @return true si cumple con los requisitos
  */
-function esContrase�a($pass)
+function esContrasena($pass)
 {
     /* ("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{4,8}$/",$pass) */
     if (preg_match("/^\S{4,16}$/", $pass)) {
@@ -20,7 +20,7 @@ function esContrase�a($pass)
 }
 
 /**
- * Funci�n que valida que el tel�fono no sea raro
+ * Función que valida que el teléfono no sea raro
  *
  * @param
  *            $value
@@ -38,8 +38,8 @@ function validarTelefono($value)
 }
 
 /**
- * Funci�n que compara la dos contraseñas que introduce el usuario por el formulario cuando tiene la opci�n de
- * modificar la contrase�a
+ * Función que compara la dos contraseñas que introduce el usuario por el formulario cuando tiene la opción de
+ * modificar la contrasena
  *
  * @param
  *            $passNueva
@@ -189,14 +189,14 @@ function validacionErrores($num)
 }
 
 /**
- * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras � n�meros
+ * Se valida el nick que tiene que tener de 4 a 8 caracteres, letras ó números
  *
  * @param
  *            $nick
  */
 function esNick($nick)
 {
-    if (preg_match("/^[A-Z \-������������0-9.]{4,8}$/i", $nick)) {
+    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ0-9.]{4,8}$/i", $nick)) {
         return true;
     } else {
         return false;
@@ -204,8 +204,8 @@ function esNick($nick)
 }
 
 /**
- * Un nombre � apellido es v�lido si tiene un m�mimo de 3 caracteres y un m�ximo de 20
- * Adem�s, que no empiece por n�meros,puede contener espacios en blanco y que no contenga caracteres especiales
+ * Un nombre ó apellido es válido si tiene un mímimo de 3 caracteres y un máximo de 20
+ * Además, que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales
  *
  * @param
  *            $nombre
@@ -214,10 +214,10 @@ function esNick($nick)
 function esNombreValido($nombre)
 {
     /**
-     * Que no empiece por n�meros,puede contener espacios en blanco y que no contenga caracteres especiales,
-     * un m�mimo de 3 caracteres y un m�ximo de 20
+     * Que no empiece por números,puede contener espacios en blanco y que no contenga caracteres especiales,
+     * un mímimo de 3 caracteres y un máximo de 20
      */
-    if (preg_match("/^[A-Z \-������������\\s]{3,20}/i", $nombre)) {
+    if (preg_match("/^[A-Z \-áéíóúÁÉÍÓÚñÑ\\s]{3,20}/i", $nombre)) {
         return true;
     } else {
         
@@ -262,11 +262,11 @@ function esCodigoCorrecto($codigo)
 }
 
 /**
- * Funcion a la que se le pasa un nombre simple � compuesto y transforma la primera letra a May�sculas
+ * Funcion a la que se le pasa un nombre simple ó compuesto y transforma la primera letra a Mayúsculas
  *
  * @param
  *            $nombre
- * @return string devuleve el nombre con la primera letra en may�sculas
+ * @return string devuleve el nombre con la primera letra en mayúsculas
  */
 function ponerLetraEnMayuscula($nombre)
 {
@@ -296,4 +296,3 @@ function esMailValido($mail)
         return true;
     return false;
 }
-?>	
