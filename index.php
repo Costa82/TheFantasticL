@@ -74,10 +74,10 @@ $map = array(
         'action' => 'envio_fallido',
         'privada' => false
     ),
-    'ver_mensaje_privado' => array(
-        'controller' => 'ControladorMensajes',
-        'action' => 'ver_mensaje_privado',
-        'privada' => true
+    'admin_loguin' => array(
+        'controller' => 'ControladorUsuarios',
+        'action' => 'admin_loguin',
+        'privada' => false
     ),
     'ver_todos_mensajes_privados' => array(
         'controller' => 'ControladorMensajes',

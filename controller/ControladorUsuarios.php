@@ -20,6 +20,19 @@ class ControladorUsuarios
         require './views/inicio.php';
     }
     
+    /**
+     * Método que llama al logueo del administrador
+     */
+    public function admin_loguin()
+    {
+        if (isset($_GET['opcion'])) {
+            $params['error'] = $_GET['opcion'];
+        } else {
+            $params['error'] = 0;
+        }
+        require './views/admin_loguin.php';
+    }
+    
     // /**
     // * Formulario de registro y registrar al usuario en la bd
     // */
