@@ -12,12 +12,21 @@ class EntidadBase{
         $this->db=$this->conectar->conexion();
     }
     
-    public function getConetar(){
+    public function getConectar(){
         return $this->conectar;
     }
     
     public function db(){
         return $this->db;
+    }
+    
+    /**
+     * Función que te devuelve la tabla
+     * 
+     * @return string
+     */
+    public function getTable(){
+        return $this->table;
     }
     
     public function getAll(){

@@ -1,17 +1,72 @@
 <?php
-require_once '../core/EntidadBase.php';
+require_once './core/EntidadBase.php';
+require_once './config/Utils.php';
 
 class Usuarios extends EntidadBase
 {
 
-    private $contrasena;
+//     private $contrasena;
 
-    private $correoAdministrador;
+//     private $correoAdministrador;
 
     public function __construct()
     {
         $tabla = "usuarios";
         parent::__construct($tabla);
+    }
+
+    /**
+     * esRegistrado
+     * Método que se utiliza para comprobar si un usuario está registrado y poder loguearse.
+     *
+     * @param
+     *            $nick
+     * @param
+     *            $pass
+     * @return boolean
+     */
+    public function esRegistrado($nick, $pass)
+    {
+        $passMD5 = md5($pass);
+        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(nick) = UPPER('$nick') AND password = '$passMD5' AND cod_estado = 'ACTV'";
+        
+        if($result = $this->db()->query($query)) {
+            if ($result->num_rows == 1) {
+                $registro = $result->fetch_assoc();
+                
+                return true;
+            }
+            $result->free_result();
+        } else {
+            
+            return false; // no hay usuario registrado
+        }
+        
+    }
+
+    /**
+     * esRegistradoNick
+     * Método que se utiliza para comprobar si un usuario está registrado y poder loguearse.
+     *
+     * @param
+     *            $nick
+     * @return boolean
+     */
+    public function esRegistradoNick($nick)
+    {
+        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(nick) = UPPER('$nick') AND cod_estado = 'ACTV'";
+        
+        if($result = $this->db()->query($query)) {
+            if ($result->num_rows == 1) {
+                $registro = $result->fetch_assoc();
+                
+                return true;
+            }
+            $result->free_result();
+        } else {
+            
+            return false; // no hay usuario registrado
+        }
     }
 
     /**
@@ -277,38 +332,6 @@ class Usuarios extends EntidadBase
     }
 
     /**
-     * esRegistrado
-     * Método que se utiliza para comprobar si un usuario está registrado y poder loguearse.
-     *
-     * @param
-     *            $nick
-     * @param
-     *            $pass
-     * @return boolean
-     */
-    public function esRegistrado($nick, $pass)
-    {
-        $passMD5 = md5($pass);
-        $sql = "SELECT * FROM $this->tabla WHERE UPPER(nick) = UPPER('$nick') AND password = '$passMD5' AND cod_estado = 'ACTV'";
-        if ($this->c->real_query($sql)) {
-            if ($result = @$this->c->store_result()) {
-                if ($result->num_rows == 1) {
-                    $registro = $result->fetch_assoc();
-                    
-                    return true;
-                }
-                $result->free_result();
-            } else {
-                
-                return false; // no hay usuario registrado
-            }
-        } else {
-            
-            return $this->c->errno . "->" . $this->c->error;
-        }
-    }
-
-    /**
      * estaDeBAJA
      * Método que se utiliza para comprobar si un usuario está de BAJA.
      *
@@ -324,35 +347,6 @@ class Usuarios extends EntidadBase
         if ($this->c->real_query($sql)) {
             if ($result = @$this->c->store_result()) {
                 if ($result->num_rows == 1) {
-                    
-                    return true;
-                }
-                $result->free_result();
-            } else {
-                
-                return false; // no hay usuario registrado
-            }
-        } else {
-            
-            return $this->c->errno . "->" . $this->c->error;
-        }
-    }
-
-    /**
-     * esRegistradoNick
-     * Método que se utiliza para comprobar si un usuario está registrado y poder loguearse.
-     *
-     * @param
-     *            $nick
-     * @return boolean
-     */
-    public function esRegistradoNick($nick)
-    {
-        $sql = "SELECT * FROM $this->tabla WHERE UPPER(nick) = UPPER('$nick') AND cod_estado = 'ACTV'";
-        if ($this->c->real_query($sql)) {
-            if ($result = @$this->c->store_result()) {
-                if ($result->num_rows == 1) {
-                    $registro = $result->fetch_assoc();
                     
                     return true;
                 }

@@ -12,8 +12,9 @@ class ControladorUsuarios
      */
     public function inicio()
     {
-        if (isset($_GET['opcion'])) {
-            $params['error'] = $_GET['opcion'];
+        if(isset($_SESSION['error']) && $_SESSION['error'] != 0) {
+            $params['error'] = $_SESSION['error'];
+            $_SESSION['error'] = 0;
         } else {
             $params['error'] = 0;
         }
@@ -25,12 +26,72 @@ class ControladorUsuarios
      */
     public function admin_loguin()
     {
-        if (isset($_GET['opcion'])) {
-            $params['error'] = $_GET['opcion'];
+        if(isset($_SESSION['error']) && $_SESSION['error'] != 0) {
+            $params['error'] = $_SESSION['error'];
+            $_SESSION['error'] = 0;
         } else {
             $params['error'] = 0;
         }
         require './views/admin_loguin.php';
+    }
+    
+    /**
+     * Método que lleva a la página del administrador
+     */
+    public function pagina_administrador()
+    {
+        if(isset($_SESSION['error']) && $_SESSION['error'] != 0) {
+            $params['error'] = $_SESSION['error'];
+            $_SESSION['error'] = 0;
+        } else {
+            $params['error'] = 0;
+        }
+        require './views/pagina_administrador.php';
+    }
+    
+    /**
+     * Método que comprueba si está registrado el usuario y si lo está lo envía a la página de administrador
+     */
+    public function logueo()
+    {
+        if (isset($_REQUEST['loguear'])) {
+            
+            if (! empty($_REQUEST['nick']) and ! empty($_REQUEST['contrasena'])) {
+                
+                $nick = trim($_REQUEST['nick']);
+                $pass = trim($_REQUEST['contrasena']);
+                $usuario = new Usuarios();
+                
+                if ($usuario->esRegistradoNick($nick)) {
+                    
+                    if ($usuario->esRegistrado($nick, $pass)) { // para loguearse, se comprueba que sea ususario registrado
+                        
+                        require_once './config/funciones.php';
+                        
+                        $_SESSION['usuario'] = $nick;
+                        
+                        // Anulamos el error
+                        $_SESSION['error'] = 0;
+                        
+                        $destino = "pagina_administrador";
+                        
+                    } else {
+                        
+                        $_SESSION['error'] = 202;
+                        $destino = "admin_loguin";
+                    }
+                } else {
+                    
+                    $_SESSION['error'] = 201;
+                    $destino = "admin_loguin";
+                }
+            }
+        }
+        
+        if (! headers_sent()) {
+            header('Location:' . $destino);
+            exit();
+        }
     }
     
     // /**

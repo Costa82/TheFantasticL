@@ -18,6 +18,11 @@ class Conectar
         $this->charset = $db_cfg["charset"];
     }
 
+    /**
+     * Conexión a la base de datos
+     * 
+     * @return mysqli
+     */
     public function conexion()
     {
         if ($this->driver == "mysql" || $this->driver == null) {

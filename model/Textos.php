@@ -12,6 +12,40 @@ class Textos extends EntidadBase
     }
 
     /**
+     * muestra el texto correspondiente según el tipo pasado [BLOG, INFO, PRES, OTRO]
+     *
+     * @param
+     *            $cod_tipo_texto
+     */
+    public function mostrarTexto($cod_tipo_texto)
+    {
+        $query = $this->db()->query("SELECT t.*, ti.* FROM ".$this->getTable()." t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
+        
+        while ($mostrar = $query->fetch_assoc()) {
+            
+            echo "<div class='presentacion espanol'>
+									<h1> " . $mostrar["titulo"] . "</h1>
+									<p> " . $mostrar["texto"] . "</p>";
+            
+            if ($mostrar["imagen"] != null) {
+                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+            }
+            
+            echo "</div>";
+            
+            echo "<div class='presentacion ingles'>
+									<h1> " . $mostrar["titulo_ingles"] . "</h1>
+									<p> " . $mostrar["texto_ingles"] . "</p>";
+            
+            if ($mostrar["imagen"] != null) {
+                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
+            }
+            
+            echo "</div>";
+        }
+    }
+
+    /**
      * Función que comprueba si ya existe el titulo del texto.
      *
      * @param
@@ -35,40 +69,6 @@ class Textos extends EntidadBase
             }
         } else {
             return $this->c->errno . " -> " . $this->c->error;
-        }
-    }
-
-    /**
-     * muestra el texto correspondiente según el tipo pasado [BLOG, INFO, PRES, OTRO]
-     *
-     * @param
-     *            $cod_tipo_texto
-     */
-    public function mostrarTexto($cod_tipo_texto)
-    {
-        $query = $this->db()->query("SELECT t.*, ti.* FROM textos t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
-
-        while ($mostrar = $query->fetch_assoc()) {
-            
-            echo "<div class='presentacion espanol'>
-									<h1> " . $mostrar["titulo"] . "</h1>
-									<p> " . $mostrar["texto"] . "</p>";
-            
-            if ($mostrar["imagen"] != null) {
-                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
-            }
-            
-            echo "</div>";
-            
-            echo "<div class='presentacion ingles'>
-									<h1> " . $mostrar["titulo_ingles"] . "</h1>
-									<p> " . $mostrar["texto_ingles"] . "</p>";
-            
-            if ($mostrar["imagen"] != null) {
-                echo "<img src='./views/default/img/textos/" . $mostrar["imagen"] . "' title='" . $mostrar["imagen"] . "' alt='" . $mostrar["imagen"] . "' />";
-            }
-            
-            echo "</div>";
         }
     }
 

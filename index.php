@@ -79,14 +79,19 @@ $map = array(
         'action' => 'admin_loguin',
         'privada' => false
     ),
-    'ver_todos_mensajes_privados' => array(
-        'controller' => 'ControladorMensajes',
-        'action' => 'ver_todos_mensajes_privados',
+    'logueo' => array(
+        'controller' => 'ControladorUsuarios',
+        'action' => 'logueo',
+        'privada' => false
+    ),
+    'pagina_administrador' => array(
+        'controller' => 'ControladorUsuarios',
+        'action' => 'pagina_administrador',
         'privada' => true
     ),
-    'borrar_mensaje' => array(
-        'controller' => 'ControladorMensajes',
-        'action' => 'borrar_mensaje',
+    'subir_texto' => array(
+        'controller' => 'ControladorTextos',
+        'action' => 'subir_texto',
         'privada' => true
     )
 );
@@ -116,8 +121,8 @@ $metodo = $controlador['action'];
 
 // // Si la página es privada comprobamos si el usuario está correctamente logueado, sino redirigimos a inicio
 // if ($controlador['privada'] && ! isset($_SESSION['usuario'])) {
-// header('location:/gestionfutbol/inicio'); // Si lo ponemos en el servidor poner /Foro/inicio
-// die();
+//     header('location:/gestionfutbol/inicio'); // Si lo ponemos en el servidor poner /Foro/inicio
+//     die();
 // }
 
 // Creamos un objeto de la clase controladora y ejecutamos el método indicado en el action

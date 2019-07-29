@@ -67,15 +67,15 @@ function validarContrasena($passNueva, $passRep)
 function validacion($num)
 {
     global $mensaje; // importante la variable global para que reconozca $mensaje de 'defines.inc.php'
-    if ($num == - 300) {
+    if ($num == 300) {
         return $mensaje[USER_EXISTE];
-    } elseif ($num == - 303) {
+    } elseif ($num == 303) {
         return $mensaje[USER_INCORRECTO];
     } elseif ($num == - 301) {
         return $mensaje[USER_CORRECTO];
-    } elseif ($num == - 201) {
+    } elseif ($num == 201) {
         return $mensaje[USER_NOEXIS];
-    } elseif ($num == - 202) {
+    } elseif ($num == 202) {
         return $mensaje[CLAVE_NOEXIS];
     } elseif ($num == - 305) {
         return $mensaje[PASS_INCORRECTO];
@@ -137,9 +137,9 @@ function validacionErrores($num)
         return $mensaje[USER_INCORRECTO];
     } elseif ($num == - 301) {
         return $mensaje[USER_CORRECTO];
-    } elseif ($num == - 201) {
+    } elseif ($num == 201) {
         return $mensaje[USER_NOEXIS];
-    } elseif ($num == - 202) {
+    } elseif ($num == 202) {
         return $mensaje[CLAVE_NOEXIS];
     } elseif ($num == - 305) {
         return $mensaje[PASS_INCORRECTO];

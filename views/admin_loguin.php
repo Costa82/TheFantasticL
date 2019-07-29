@@ -14,8 +14,8 @@ echo '
 					</p>
 					<div id="errores">';
 
-                            if (isset($_REQUEST['num'])) {
-                                $num = $_REQUEST['num'];
+                            if ($params['error'] != 0) {
+                                $num = $params['error'];
                                 $mensaje = validacion($num);
                                 echo $mensaje;
                             }
@@ -25,7 +25,7 @@ echo '
 				</div>
 			</div>
 			<div class="form-bottom">
-				<form role="form" action="logueo" method="post"
+				<form role="form" action="./logueo" method="post"
 					class="login-form">
 					<div class="form-group">
 						<label><span>* </span>Nick</label> <input type="text" name="nick"
