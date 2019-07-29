@@ -1,14 +1,12 @@
 <?php
+use function config\console_log;
+
 require_once './core/EntidadBase.php';
-require_once './config/Utils.php';
+require_once './config/utils.php';
 
 class Usuarios extends EntidadBase
 {
-
-//     private $contrasena;
-
-//     private $correoAdministrador;
-
+    
     public function __construct()
     {
         $tabla = "usuarios";
@@ -28,7 +26,7 @@ class Usuarios extends EntidadBase
     public function esRegistrado($nick, $pass)
     {
         $passMD5 = md5($pass);
-        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(nick) = UPPER('$nick') AND password = '$passMD5' AND cod_estado = 'ACTV'";
+        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(id) = UPPER('$nick') AND password = '$passMD5' AND cod_estado = 'ACTV'";
         
         if($result = $this->db()->query($query)) {
             if ($result->num_rows == 1) {
@@ -54,7 +52,7 @@ class Usuarios extends EntidadBase
      */
     public function esRegistradoNick($nick)
     {
-        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(nick) = UPPER('$nick') AND cod_estado = 'ACTV'";
+        $query = "SELECT * FROM ".$this->getTable()." WHERE UPPER(id) = UPPER('$nick') AND cod_estado = 'ACTV'";
         
         if($result = $this->db()->query($query)) {
             if ($result->num_rows == 1) {

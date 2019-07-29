@@ -262,28 +262,6 @@ function esCodigoCorrecto($codigo)
 }
 
 /**
- * Funcion a la que se le pasa un nombre simple ó compuesto y transforma la primera letra a Mayúsculas
- *
- * @param
- *            $nombre
- * @return string devuleve el nombre con la primera letra en mayúsculas
- */
-function ponerLetraEnMayuscula($nombre)
-{
-    $nombreCompuesto = explode(" ", $nombre);
-    $nombreConPrimeraletramayus = "";
-    for ($i = 0; $i < count($nombreCompuesto); $i ++) {
-        $letra = strtoupper(substr($nombreCompuesto[$i], 0, 1));
-        $nombreCompuesto[$i] = $letra . substr($nombreCompuesto[$i], 1);
-    }
-    for ($i = 0; $i < count($nombreCompuesto); $i ++) {
-        
-        $nombreConPrimeraletramayus .= $nombreCompuesto[$i] . " ";
-    }
-    return $nombreConPrimeraletramayus;
-}
-
-/**
  * Con un filtro validamos la direccion de correo electronico
  *
  * @param

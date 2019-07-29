@@ -1,6 +1,6 @@
 <?php
 require_once './core/EntidadBase.php';
-require_once './config/Utils.php';
+require_once './config/utils.php';
 
 class Textos extends EntidadBase
 {
@@ -19,7 +19,8 @@ class Textos extends EntidadBase
      */
     public function mostrarTexto($cod_tipo_texto)
     {
-        $query = $this->db()->query("SELECT t.*, ti.* FROM ".$this->getTable()." t, textos_ingles ti WHERE t.id_texto = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
+        $query = $this->db()->query("SELECT t.id as titulo, t.texto as texto, t.imagen as imagen, ti.id as titulo_ingles, ti.texto_ingles as texto_ingles FROM
+             ".$this->getTable()." t, textos_ingles ti WHERE t.id = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
         
         while ($mostrar = $query->fetch_assoc()) {
             
