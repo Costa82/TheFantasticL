@@ -99,7 +99,7 @@ function validacion($num)
         return $mensaje[NICK_INCORRECTO];
     } elseif ($num == - 212) {
         return $mensaje[ADMIN_NO_PERMISOS];
-    } elseif ($num == - 213) {
+    } elseif ($num == 213) {
         return $mensaje[TITULO_EXISTE];
     } elseif ($num == - 214) {
         return $mensaje[AUTOR_INCORRECTO];
@@ -117,74 +117,6 @@ function validacion($num)
         return $mensaje[TEXTO_SUBIDO_OK];
     } elseif ($num == - 402) {
         return $mensaje[TEXTO_SUBIDO_KO];
-    }
-}
-
-/**
- * Definimos los mensajes de error
- *
- * @global type $mensaje
- * @param
- *            $num
- * @return $mensaje[]
- */
-function validacionErrores($num)
-{
-    global $mensaje; // importante la variable global para que reconozca $mensaje de 'defines.inc.php'
-    if ($num == - 300) {
-        return $mensaje[USER_EXISTE];
-    } elseif ($num == - 303) {
-        return $mensaje[USER_INCORRECTO];
-    } elseif ($num == - 301) {
-        return $mensaje[USER_CORRECTO];
-    } elseif ($num == 201) {
-        return $mensaje[USER_NOEXIS];
-    } elseif ($num == 202) {
-        return $mensaje[CLAVE_NOEXIS];
-    } elseif ($num == - 305) {
-        return $mensaje[PASS_INCORRECTO];
-    } elseif ($num == - 204) {
-        return $mensaje[EMAIL_REPE];
-    } elseif ($num == - 205) {
-        return $mensaje[ERROR_FECHA_NACIMIENTO];
-    } elseif ($num == - 206) {
-        return $mensaje[TFNO_INCORRECTO];
-    } elseif ($num == - 207) {
-        return $mensaje[NOMBRE_INCORRECTO];
-    } elseif ($num == - 208) {
-        return $mensaje[APELLIDO_INCORRECTO];
-    } elseif ($num == - 209) {
-        return $mensaje[EMAIL_INCORRECTO];
-    } elseif ($num == - 210) {
-        return $mensaje[PASS_DIFERENTES];
-    } elseif ($num == - 305) {
-        return $mensaje[PASS_INCORRECTO];
-    } elseif ($num == - 211) {
-        return $mensaje[NICK_INCORRECTO];
-    } elseif ($num == - 212) {
-        return $mensaje[ADMIN_NO_PERMISOS];
-    } elseif ($num == - 213) {
-        return $mensaje[TITULO_EXISTE];
-    } elseif ($num == - 214) {
-        return $mensaje[AUTOR_INCORRECTO];
-    } elseif ($num == - 215) {
-        return $mensaje[GENERO_INCORRECTO];
-    } elseif ($num == - 216) {
-        return $mensaje[CODIGO_INCORRECTO];
-    } elseif ($num == - 217) {
-        return $mensaje[CARACTERES_ESPECIALES];
-    } elseif ($num == - 306) {
-        return $mensaje[CONF_REGISTRO];
-    } elseif ($num == - 666) {
-        return $mensaje[ERROR_CONEXION];
-    } elseif ($num == - 667) {
-        return $mensaje[ERROR_ENVIO_MAIL];
-    } elseif ($num == - 668) {
-        return $mensaje[ERROR_ENVIO_MENSAJE];
-    } elseif ($num == - 669) {
-        return $mensaje[ERROR_LIBRO_LISTA];
-    } elseif ($num == - 1000) {
-        return $mensaje[ERROR_GENERAL];
     }
 }
 

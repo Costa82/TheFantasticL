@@ -91,7 +91,7 @@ class ControladorTextos
                     // Texto
                     $texto = $_REQUEST['texto'];
                     
-                    // Texto en inglÉs
+                    // Texto en inglés
                     $texto_ingles = $_REQUEST['texto_ingles'];
                     
                     // Imagen
@@ -105,14 +105,16 @@ class ControladorTextos
                     // Fecha subida
                     $fecha_subida = date("Y-m-d");
                     
-                    // A�adimos el texto
+                    // Añadimos el texto
                     $num = $textos->addTexto($titulo, $titulo_ingles, $tipo, $texto, $texto_ingles, $img, $fecha_subida);
                 } else {
                     
                     $num = 213;
                 }
                 
-                $destino = "pagina_administrador/$num";
+                $_SESSION['error'] = $num;
+                
+                $destino = "pagina_administrador";
             }
         }
         

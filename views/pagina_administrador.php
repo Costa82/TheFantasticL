@@ -1,7 +1,7 @@
 <?php
 ob_start();
 
-echo "<h1>LOGUIN ADMINISTRADOR</h1>";
+echo "<h1>PÁGINA DEL ADMINISTRADOR</h1>";
 
 echo '
     <div class="container">
@@ -14,8 +14,8 @@ echo '
 					</p>
 					<div id="errores">';
 
-if (isset($_GET['num'])) {
-    $num = $_GET['num'];
+if ($params['error'] != 0) {
+    $num = $params['error'];
     $mensaje = validacion($num);
     echo $mensaje;
 }

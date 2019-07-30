@@ -1,9 +1,24 @@
 <?php
+use function config\quitarCaracteres;
+
 require_once './core/EntidadBase.php';
 require_once './config/utils.php';
 
 class Textos extends EntidadBase
 {
+
+    // Columnas de BBDD
+    public $id;
+
+    public $fecha_publicacion;
+
+    public $texto;
+
+    public $imagen;
+
+    public $cod_tipo_texto;
+
+    public $cod_estado;
 
     public function __construct()
     {
@@ -19,8 +34,8 @@ class Textos extends EntidadBase
      */
     public function mostrarTexto($cod_tipo_texto)
     {
-        $query = $this->db()->query("SELECT t.id as titulo, t.texto as texto, t.imagen as imagen, ti.id as titulo_ingles, ti.texto_ingles as texto_ingles FROM
-             ".$this->getTable()." t, textos_ingles ti WHERE t.id = ti.id_texto AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
+        $query = $this->db()->query("SELECT t.*, ti.* FROM
+             " . $this->getTable() . " t, textos_ingles ti WHERE t.titulo = ti.titulo AND t.cod_tipo_texto = '" . $cod_tipo_texto . "' AND t.cod_estado = 'ACTV'");
         
         while ($mostrar = $query->fetch_assoc()) {
             
@@ -58,18 +73,17 @@ class Textos extends EntidadBase
         // Igualamos a mayúsculas la búsqueda para evitar los problemas con mayúsculas y minúsculas
         $tituloMinuscula = strtoupper($titulo);
         
-        // $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo . "' AND UPPER(autor) ='" . $autor . "'";
-        $sql = "SELECT * FROM " . $this->tabla . " WHERE UPPER(titulo) ='" . $titulo . "'";
-        if ($this->c->real_query($sql)) {
-            if ($resul = $this->c->store_result()) {
-                if ($resul->num_rows == 0) {
-                    return false;
-                } else {
-                    return true;
-                }
+        $query = "SELECT * FROM " . $this->getTable() . " WHERE UPPER(titulo) ='" . $titulo . "'";
+        
+        if ($result = $this->db()->query($query)) {
+            if ($result->num_rows == 1) {
+                return true;
+            } else {
+                return false;
             }
         } else {
-            return $this->c->errno . " -> " . $this->c->error;
+            $error=$this->conn->errorInfo();
+            throw new Exception("Error al ejecutar la SQL: ". $error[2]);
         }
     }
 
@@ -102,22 +116,18 @@ class Textos extends EntidadBase
         $tituloSinCaracteres = quitarCaracteres($titulo);
         $estado = "ACTV";
         
-        $sql = "INSERT INTO " . $this->tabla . " (titulo, fecha_publicacion, texto, imagen, cod_tipo_texto, cod_estado) VALUES(?,?,?,?,?,?)";
-        $sen = $this->c->prepare($sql);
-        $sen->bind_param("ssssss", $tituloSinCaracteres, $fecha, $texto, $foto, $tipo, $estado);
+        $query = "INSERT INTO " . $this->getTable() . " (titulo, fecha_publicacion, texto, imagen, cod_tipo_texto, cod_estado) VALUES('$titulo','$fecha','$texto','$img','$tipo','$estado')";
         
-        if ($sen->execute()) {
+        if ($this->db()->query($query)) {
             
-            $id_texto = $this->get_id($titulo);
-            
-            if ($this->addTextoIngles($id_texto, $titulo_ingles, $texto_ingles) && $id_texto != 0) {
-                return - 401; // Texto subido correctamente
+            if ($this->addTextoIngles($titulo, $titulo_ingles, $texto_ingles)) {
+                return 401; // Texto subido correctamente
             } else {
-                $this->borrarTexto($id_texto);
-                return - 402; // Texto no subido
+                $this->borrarTexto($titulo);
+                return 402; // Texto no subido
             }
         } else {
-            return - 402; // Texto no subido
+            return 402; // Texto no subido
         }
     }
 
@@ -132,7 +142,7 @@ class Textos extends EntidadBase
      */
     public function guardarImgTexto($titulo, $archivo_img)
     {
-        $titulo = $this->quitarCaracteres($titulo);
+        $titulo = quitarCaracteres($titulo);
         $img_name = $archivo_img['name'];
         $img_type = $archivo_img['type'];
         $img_tmp_name = $archivo_img['tmp_name'];
@@ -168,27 +178,6 @@ class Textos extends EntidadBase
     }
 
     /**
-     * Función que devuelve el id de un texto a partir de su titulo.
-     *
-     * @param
-     *            $titulo
-     * @return mixed
-     */
-    public function get_id($titulo)
-    {
-        $sql = "SELECT id_texto FROM " . $this->tabla . " WHERE titulo='" . $titulo . "'";
-        if ($this->c->real_query($sql)) {
-            if ($resul = $this->c->store_result()) {
-                $mostrar = $resul->fetch_assoc();
-                return $mostrar["id_texto"];
-            }
-        } else {
-            echo $this->c->errno . " -> " . $this->c->error;
-            return 0;
-        }
-    }
-
-    /**
      * Añade el texto en inglés devolverá true si se ha registrado y false si ha dado error
      *
      * @param
@@ -199,13 +188,12 @@ class Textos extends EntidadBase
      *            $texto_ingles
      * @return boolean
      */
-    public function addTextoIngles($id_texto, $titulo_ingles, $texto_ingles)
+    public function addTextoIngles($titulo, $titulo_ingles, $texto_ingles)
     {
-        $sql = "INSERT INTO " . $this->tabla_ingles . " (id_texto, titulo_ingles, texto_ingles) VALUES(?,?,?)";
-        $sen = $this->c->prepare($sql);
-        $sen->bind_param("iss", $id_texto, $titulo_ingles, $texto_ingles);
+        $query = "INSERT INTO textos_ingles (titulo_ingles, titulo, texto_ingles) 
+            VALUES('$titulo_ingles','$titulo','$texto_ingles')";
         
-        if ($sen->execute()) {
+        if ($this->db()->query($query)) {
             return true;
         } else {
             return false;
@@ -219,16 +207,14 @@ class Textos extends EntidadBase
      *            $id_texto
      * @return
      */
-    public function borrarTexto($id_texto)
+    public function borrarTexto($titulo)
     {
-        $sql_query = "DELETE * FROM " . $this->tabla . " WHERE id_texto = ?";
-        $stmt = $this->c->stmt_init();
-        $stmt->prepare($sql_query);
-        if ($stmt === false) {
+        $query = "DELETE * FROM " . $this->getTable() . " WHERE titulo = '$titulo'";
+        if ($this->db()->query($query)) {
+            return true;
+        } else {
             return false;
         }
-        $stmt->bind_param('i', $id_texto);
-        $stmt->execute();
     }
 
     /**

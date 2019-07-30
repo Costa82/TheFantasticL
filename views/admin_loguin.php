@@ -14,11 +14,11 @@ echo '
 					</p>
 					<div id="errores">';
 
-                            if ($params['error'] != 0) {
-                                $num = $params['error'];
-                                $mensaje = validacion($num);
-                                echo $mensaje;
-                            }
+if ($params['error'] != 0) {
+    $num = $params['error'];
+    $mensaje = validacion($num);
+    echo $mensaje;
+}
 
 echo '                    
                     </div>
